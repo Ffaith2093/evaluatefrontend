@@ -1,0 +1,90 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/teacher/register/register",
+          "pathName": "pages/teacher/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/homePage/homePage",
+          "pathName": "pages/teacher/homePage/homePage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/teacherMy/teacherMy",
+          "pathName": "pages/teacher/teacherMy/teacherMy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/manage/manage",
+          "pathName": "pages/teacher/manage/manage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/signNewHomework/signNewHomework",
+          "pathName": "pages/teacher/signNewHomework/signNewHomework",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/homeworkDetail/homeworkDetail",
+          "pathName": "pages/teacher/homeworkDetail/homeworkDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/createClass/createClass",
+          "pathName": "pages/teacher/createClass/createClass",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/studentDetail/studentDetail",
+          "pathName": "pages/teacher/studentDetail/studentDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/registerStu/registerStu",
+          "pathName": "pages/student/registerStu/registerStu",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/studentMy/studentMy",
+          "pathName": "pages/student/studentMy/studentMy",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/evaluateDetail/evaluateDetail",
+          "pathName": "pages/teacher/evaluateDetail/evaluateDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/homePageStu/homePageStu",
+          "pathName": "pages/student/homePageStu/homePageStu",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

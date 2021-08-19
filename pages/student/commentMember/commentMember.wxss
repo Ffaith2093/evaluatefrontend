@@ -1,0 +1,141 @@
+.topBackground{
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  height: 340rpx;
+  border-radius: 0 0 40rpx 40rpx;
+  display: flex;
+  flex-direction: row;
+  padding-left: 34rpx;
+}
+.topImg{
+  width: 220rpx;
+  height: 280rpx;
+  margin-right: 46rpx;
+}
+.middleLine{
+  height: 246rpx;
+  width: 1rpx;
+  background: #bbbbbb;
+}
+.rightView{
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+  padding-top: 48rpx;
+}
+.firstTab{
+  display: flex;
+  flex-direction: row;
+}
+.star{
+  height: 40rpx;
+  width : 40rpx;
+  margin-right: 10rpx;
+}
+.starText{
+  color: var(--fontColorYellow);
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.classDetail{
+  margin-top: 10rpx;
+  color: var(--fontColorWhite);
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.lastTab{
+  margin-top: 34rpx;
+  display: flex;
+  flex-direction: row;
+}
+.lastText{
+  color: var(--fontColorYellow);
+  font-size: 28rpx;
+}
+.orangeText{
+  color: var(--fontColorWhite);
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+.middleContent{
+  position: relative;
+  top: -40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  padding: 30rpx;
+  background: var(--shallowYellowBackground);
+}
+.selectContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.tabItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabText{
+  color: var(--fontColorGrey);
+  font-size: 32rpx;
+  font-weight: normal;
+}
+.textactive{
+  color: var(--deepBackgroundBlue);
+}
+.blueCircle{
+  background: var(--componentBlue);
+  height: 12rpx;
+  width: 12rpx;
+  border-radius: 12rpx;
+  margin-top: 6rpx;
+}
+.middleBackground{
+  padding-left: 70rpx;
+}
+.studentItem{
+  margin-top: 15rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  flex-direction: row;
+}
+.leftPart{
+  display: flex;
+  flex-direction: column;
+}
+.studentName{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--fontColorBlack);
+  margin-bottom: 4rpx;
+}
+.studentID{
+  color: var(--fontColorGrey);
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.rightButton{
+  background: var(--componnentOrange);
+  position: absolute;
+  right: 90rpx;
+  padding-left: 18rpx;
+  padding-right: 18rpx;
+  border-radius: 40rpx;
+  height: 50rpx;
+  width: 180rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightButton::after{
+  border: none;
+}
+.rightButton>text{
+  font-size: 24rpx;
+  color: var(--fontColorWhite);
+}
+.commentImg{
+  height: 30rpx;
+  width: 30rpx;
+}

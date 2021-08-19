@@ -1,0 +1,104 @@
+page {
+  background: var(--shallowYellowBackground);
+  height: 100%;
+}
+.topBack{
+  height: 180rpx;
+  width: 100%;
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  border-radius: 0 0 60rpx 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newClassBtn{
+  height: 100rpx;
+  width: 460rpx;
+  border-radius: 20px;
+  background: var(--componnentLightOrange);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.addImage{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+.addText{
+  font-size: 34rpx;
+  color: var(--fontColorWhite);
+  font-weight: normal;
+}
+.middleContent{
+  margin-top: 30rpx;
+  padding-left: 70rpx;
+  padding-right: 70rpx;
+}
+.middleTitle{
+  font-size: 44rpx;
+  color: var(--fontColorBlack);
+  font-weight: normal;
+  margin-bottom: 20rpx;
+}
+.gradeItem{
+  height: 80rpx;
+  background: var(--componentLightgrey);
+  padding-left: 36rpx;
+  margin-bottom: 30rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.gradeItem:hover{
+  background: var(--buttonPurple);
+}
+.selectImg{
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 24rpx;
+}
+.gradeName{
+  font-size: 24rpx;
+  color: var(--fontColorBlack);
+  font-weight: normal;
+}
+.sList{
+  margin-top: 16rpx;
+  margin-bottom: 30rpx;
+  padding-top: 28rpx;
+  padding-bottom: 20rpx;
+  background: var(--componentLightgrey);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.classItem{
+  height: 80rpx;
+  margin-bottom: 14rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--fontColorWhite);
+}
+.starImage{
+  height: 40rpx;
+  width: 40rpx;
+  margin-left: 30rpx;
+}
+.className{
+  color: var(--fontColorBlack);
+  font-size: 24rpx;
+  font-weight: normal;
+  margin-left: 40rpx;
+}
+.classID{
+  position: absolute;
+  font-size: 24rpx;
+  right: 90rpx;
+  color: var(--fontColorOrange);
+  font-weight: 500;
+}
+

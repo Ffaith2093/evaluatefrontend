@@ -1,0 +1,57 @@
+.all{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+.evaluateItem{
+  margin-top: 30rpx;
+  margin-bottom: 14rpx;
+  width: 90%;
+  background: var(--shallowYellowBackground);
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  padding: 26rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30rpx;
+}
+.topInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.studentName{
+  display: flex;
+  padding: 5rpx 25rpx;
+  justify-content: center;
+  align-items: center;
+  background: var(--shallowBackgroundBlue);
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: var(--fontColorWhite);
+  margin-right: 48rpx;
+}
+.topImage{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 15rpx;
+}
+.grade{
+  color: var(--fontColorBlack);
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.gradeDetail{
+  color: var(--fontColorOrange);
+  font-size: 28rpx;
+  font-weight: normal;
+}
+.commentDetail{
+  margin-top: 26rpx;
+  font-size: 28rpx;
+  color: var(--fontColorBlack);
+}
+.block{
+  height: 60rpx;
+}

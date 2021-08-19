@@ -1,0 +1,3 @@
+<!--pages/teacher/picAll/picAll.wxml-->
+<teacherTab tabs="{{tabs}}" binditemChange="handleItemChange">
+</teacherTab>

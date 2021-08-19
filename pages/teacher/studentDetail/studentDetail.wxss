@@ -1,0 +1,144 @@
+/* pages/teacher/studentDetail/studentDetail.wxss */
+.topView{
+  height: 320rpx;
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  border-radius: 0px 0px 60px 60px;
+  display: flex;
+  flex-direction: row;
+}
+.topImage{
+  height: 200rpx;
+  width: 200rpx;
+  margin-left: 26rpx;
+  margin-top: 30rpx;
+}
+.rightItem{
+  margin-left: 36rpx;
+  display: flex;
+  flex-direction: column;
+}
+.nameText{
+  color: var(--fontColorWhite);
+  font-weight: normal;
+  font-size: 40rpx;
+  margin-top: 10rpx;
+}
+.itemText{
+  margin-top: 30rpx;
+  height: 56rpx;
+  background: rgba(225, 220, 213, 0.5);
+  border: 1px solid #FFFFFF;
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.itemText>text{
+  color: var(--fontColorWhite);
+  font-size: 24rpx;
+  margin-right: 24rpx;
+}
+.itemImg{
+  margin-left: 28rpx;
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 18rpx;
+}
+.middleContent{
+  margin-top: 60rpx;
+  padding-left: 44rpx;
+}
+.middleText{
+  color: var(--fontColorBlack);
+  font-size: 36rpx;
+  font-weight: normal;
+  margin-bottom: 48rpx;
+}
+.homeworkItem{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.upItem{
+  display: flex;
+  flex-direction: row;
+}
+.imgBack{
+  background: var(--buttonLightPurple);
+  border-radius: 120rpx;
+  height: 120rpx;
+  width: 120rpx;
+  margin-right: 56rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.homeworkImg{
+  height: 70rpx;
+  width: 70rpx;
+}
+.rightContent{
+  display: flex;
+  flex-direction: column;
+  width: 320rpx;
+}
+.contentTitle{
+  font-size: 32rpx;
+  color: var(--fontColorBlack);
+  margin-bottom: 14rpx;
+}
+.lines{
+  height: 100rpx;
+  width: 2rpx;
+  background: var(--fontColorGrey);
+  margin-left: 60rpx;
+}
+.homeworkStatus{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nowText{
+  font-size: 24rpx;
+  color: var(--fontColorBlack);
+}
+.statusText{
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-left: 10rpx;
+}
+.orange{
+  color: var(--fontColorOrange);
+}
+.green{
+  color: var(--fontColorGreen);
+}
+.yellow{
+  color: var(--fontColorYellow);
+}
+.btnView{
+  display: flex;
+  flex-direction: column;
+}
+.middleBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 50rpx;
+  color: var(--fontColorWhite);
+  font-size: 26rpx;
+  border-radius: 40rpx !important;
+}
+.middleBtn::after{
+  border: none;
+}
+.greenBack{
+    background: radial-gradient( rgba(131, 204, 191, 1), rgba(131, 204, 191, 0.3));
+    margin-bottom: 10rpx;
+}
+.yellowBack{
+    background: radial-gradient(rgba(255, 119, 81, 1),rgba(255, 119, 81, 0.3));
+}
+
+

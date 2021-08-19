@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "studentTab":"/components/studentTab/studentTab",
+    "navBar": "/components/navBar/navBar"
+  },
+  "navigationStyle": "custom"
+}

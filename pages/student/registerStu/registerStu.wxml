@@ -1,0 +1,24 @@
+<!--pages/teacher/register/register.wxml-->
+<view class="all">
+  <view class="topView">
+    <text class="topText">学生用户注册</text>
+    <image class="topImg" src="{{infoImgUrl}}"></image>
+  </view>
+  <view class="registerInfo">
+    <view class="registerItem">
+      <image class="itemImg" src="{{studentIDUrl}}"></image>
+      <input class="inputItem" placeholder="请输入学号" name="ID" bindinput="lisenerInputID" value="{{studentID}}"/>
+    </view>
+    <view class="registerItem">
+      <image class="itemImg" src="{{studentNameUrl}}"></image>
+      <input class="inputItem" placeholder="请输入姓名" name="name" bindinput="lisenerInputName" value="{{studentName}}"/>
+    </view>
+    <view class="registerItem">
+      <image class="itemImg" src="{{numberUrl}}"></image>
+      <input class="inputItem" placeholder="请输入班级编号" bname="number" bindinput="lisenerInputNumber" value="{{studentNumber}}"/>
+    </view>
+  </view>
+  <button class="bottomBtn" bindtap="clickRegister">
+    <text>确认注册</text>
+  </button>
+</view>

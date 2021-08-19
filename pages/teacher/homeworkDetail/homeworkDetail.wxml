@@ -1,0 +1,50 @@
+<view class="all">
+  <navBar navTitle="评价小助手" style="width:200rpx;" isArrowWhite='true' navTitleColor="#fff"></navBar>
+  <view class="topBack">
+    <view class="topTitle">
+      <view class="homeworkText">{{homeworkName}}</view>
+      <image class="titleImage" src="{{topImage}}"></image>
+    </view>
+  </view>
+  <view class="contentBack">
+    <view class="numberBar">
+      <view class="numberItem">
+        <text class="numberTitle">作业应交</text>
+        <view class="numberBack purple">{{shouldSubmit}}人</view>
+      </view>
+      <view class="numberItem">
+        <text class="numberTitle">作业已交</text>
+        <view class="numberBack orange">{{haveSubmit}}人</view>
+      </view>
+      <view class="numberItem">
+        <text class="numberTitle">暂未讲课</text>
+        <view class="numberBack pink">{{noSpeech}}人</view>
+      </view>
+    </view>
+    <button class="didnotSubmitList">
+      <text>查看未提交同学名单</text>
+    </button>
+    <view class="detailItem">
+      <image src="{{detailImage}}" class="detailImage"></image>
+      <view class="rightItem row">
+        <view class="detailTitle">作业所占总分比例 ：</view>
+        <view class="detailContent noMargin">{{homeworkRatio}}</view>
+      </view>
+    </view>
+    <view class="detailItem">
+      <image src="{{detailImage}}" class="detailImage"></image>
+      <view class="rightItem">
+        <view class="detailTitle">作业要求 ：</view>
+        <view class="detailContent">{{homeworkRequest}}</view>
+      </view>
+    </view>
+    <view class="detailItem">
+      <image src="{{detailImage}}" class="detailImage"></image>
+      <view class="rightItem">
+        <view class="detailTitle">作业评分标准 ：</view>
+        <view wx:for="{{homeworkStandard}}" class="detailContent">{{item}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+

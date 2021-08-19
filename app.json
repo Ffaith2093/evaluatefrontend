@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/teacher/register/register",
+    "pages/student/registerStu/registerStu",
+    "pages/teacher/homePage/homePage",
+    "pages/teacher/teacherMy/teacherMy",
+    "pages/teacher/manage/manage",
+    "pages/teacher/picAll/picAll",
+    "pages/teacher/homeworkDetail/homeworkDetail",
+    "pages/teacher/signNewHomework/signNewHomework",
+    "pages/teacher/classDetail/classDetail",
+    "pages/teacher/createClass/createClass",
+    "pages/teacher/studentDetail/studentDetail",
+    "pages/teacher/evaluateDetail/evaluateDetail",
+    "pages/teacher/videoDetail/videoDetail",
+    "pages/student/homePageStu/homePageStu",
+    "pages/student/studentMy/studentMy",
+    "pages/student/comment/comment",
+    "pages/student/commentMember/commentMember",
+    "pages/student/commentDetail/commentDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "评价小助手",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,54 @@
+/**app.wxss**/
+
+/*.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} */
+
+page {
+  /* 背景颜色 */
+  /* 渐变背景颜色（深）*/
+  --mostDeepBackgroundBlue:#4672c4;
+  /*渐变背景颜色（一般）*/
+  --deepBackgroundBlue: #658ace;
+  /* 渐变背景颜色（浅）*/
+  --shallowBackgroundBlue: #8ea9db;
+  /*淡黄色背景颜色*/
+  --shallowYellowBackground: #F7F0E7;
+  /*深色组件背景颜色 */
+  --componentBlue: #5C6FDF;
+  /*浅紫色按钮底色*/
+  --buttonPurple: #C7CDFA;
+  /*浅浅紫色按钮底色*/
+  --buttonLightPurple: #d6dafa;
+  /*浅灰色背景底色*/
+  --componentLightgrey: #F7F8FC;
+  /*字体*/
+  /*字体颜色（深）*/
+  --fontColorBlack: #101010;
+  /*字体颜色（浅）*/
+  --fontColorWhite: #FFFFFF;
+  /*字体颜色（深灰）*/
+  --fontColorGrey: #888d8c;
+  /*字体颜色（深橙）*/
+  --fontColorOrange: #FF7751;
+  /*字体颜色（绿色）*/
+  --fontColorGreen: #24A27C;
+  /*字体颜色（黄色）*/
+  --fontColorYellow: #fecf5b;
+  /*字体颜色（玫红色）*/
+  --fontColorRed: #e96fc0;
+  /*橙色组件背景颜色*/
+  --componnentOrange: #FD9B50;
+  /*浅橙色组件背景颜色*/
+  --componnentLightOrange: #fccf87;
+  /*浅橙色组件背景颜色(当前信息未完整的情况下)*/
+  --componnentLightOrangeNotouch:#fce7c8;
+  /*浅粉色组件背景颜色*/
+  --componentPink: #f7c3c3;
+}

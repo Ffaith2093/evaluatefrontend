@@ -1,0 +1,9 @@
+<!--components/studentTab/studentTab.wxml-->
+<view class="bottomTab">
+  <view 
+      wx:for="{{tabs}}" wx:key="id" class="titleItem {{item.isActive? 'active':''}}" 
+      bindtap="handleItemTap" data-index="{{index}}">
+    <image src="{{item.isActive? item.imgUrlActive : item.imgUrl}}"></image>
+    <text>{{item.name}}</text>
+  </view>
+</view>

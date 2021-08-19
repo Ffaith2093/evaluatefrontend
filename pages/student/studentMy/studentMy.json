@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "studentTab":"/components/studentTab/studentTab"
+  },
+  "navigationStyle": "custom"
+}

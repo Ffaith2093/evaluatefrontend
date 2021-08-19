@@ -1,0 +1,134 @@
+page {
+  background: var(--shallowYellowBackground);
+  height: 100%;
+}
+.topBack{
+  height: 120rpx;
+  width: 100%;
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  border-radius: 0 0 70rpx 70rpx;
+  display: flex;
+  justify-content: center;
+}
+.topTitle{
+  position: absolute;
+  top: 140rpx;
+  width: 70%;
+  height: 166rpx;
+  background: var(--fontColorWhite);
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.homeworkText{
+  font-size: 36rpx;
+  color: var(--fontColorBlack);
+  font-weight: bold;
+  margin-right: 30rpx;
+}
+.titleImage{
+  width: 180rpx;
+  height: 160rpx;
+}
+.contentBack{
+  position: relative;
+  top: 100rpx;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+.numberBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.numberItem{
+  height: 174rpx;
+  width: 190rpx;
+  border-radius: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--fontColorWhite);
+  box-shadow: 0px 3px 6px 0px #acaaaa;
+}
+.numberTitle{
+  color: var(--fontColorBlack);
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+.numberBack{
+  height: 72rpx;
+  width: 120rpx;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  line-height: 72rpx;
+  font-size: 26rpx;
+  color: var(--fontColorGrey);
+}
+.purple{
+  background: var(--buttonLightPurple);
+}
+.orange{
+  background: var(--componnentLightOrange);
+}
+.pink{
+  background: var(--componentPink);
+}
+.didnotSubmitList{
+  margin-top: 48rpx;
+  margin-bottom: 56rpx;
+  width: 100% !important;
+  height: 80rpx;
+  background: var(--componnentOrange);
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 6px 0px #acaaaa;
+}
+.didnotSubmitList>text{
+  font-size: 28rpx;
+  color: var(--fontColorWhite);
+  font-weight: lighter;
+}
+.detailItem{
+  background: var(--buttonLightPurple);
+  padding: 22rpx 30rpx;
+  border-radius: 40rpx;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 48rpx;
+}
+.detailImage{
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 16rpx;
+}
+.rightItem{
+  display: flex;
+  flex-direction: column;
+}
+.row{
+  flex-direction: row;
+  align-items: center;
+}
+.detailTitle{
+  color: var(--fontColorOrange);
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-right: 12rpx;
+}
+.detailContent{
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  color: var(--fontColorBlack);
+}
+.noMargin{
+  margin-top: 0;
+}

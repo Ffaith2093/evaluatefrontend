@@ -1,0 +1,63 @@
+.all{
+  display: flex;
+  justify-content: center;
+}
+.topTab{
+  height: 256rpx;
+  width: 90%;
+  border-radius: 40rpx;
+  background: var(--componentBlue);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-left: 26rpx;
+  padding-top: 10rpx;
+}
+.leftItem{
+  display: flex;
+  flex-direction: column;
+}
+.titleText{
+  color: var(--fontColorWhite);
+  font-weight: normal;
+  font-size: 40rpx;
+}
+.itemTextTop{
+  margin-top: 30rpx;
+  height: 50rpx;
+  background: rgba(225, 220, 213, 0.5);
+  border: 1px solid #FFFFFF;
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  white-space: nowrap;
+  font-size: 24rpx;
+}
+.itemTextBottom{
+  margin-top: 20rpx;
+  height: 50rpx;
+  background: rgba(225, 220, 213, 0.5);
+  border: 1px solid #FFFFFF;
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15rpx;
+  white-space: nowrap;
+  font-size: 24rpx;
+}
+.textWhite{
+  color: var(--fontColorWhite);
+}
+.textOrange{
+  color: var(--fontColorOrange);
+}
+.rightImg{
+  width: 210rpx;
+  height: 180rpx;
+  margin-left: 70rpx;
+}

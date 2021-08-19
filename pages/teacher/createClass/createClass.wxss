@@ -1,0 +1,55 @@
+/* pages/teacher/createClass/createClass.wxss */
+.mainContent{
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  padding-bottom: 40rpx;
+  border-radius: 0 0 40rpx 40rpx;
+}
+.topView{
+  overflow: hidden;
+}
+.topTitle{
+  float: left;
+  color: var(--fontColorWhite);
+  font-size: 48rpx;
+  font-weight: normal;
+  margin-left: 46rpx;
+  margin-top: 84rpx;
+}
+.topImage{
+  float: right;
+  width: 312rpx;
+  height: 300rpx;
+  margin-top: 10rpx;
+}
+.inputItem{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}
+.inputText{
+  color: var(--fontColorWhite);
+  font-size: 36rpx;
+  margin-left: 128rpx;
+  margin-bottom: 40rpx;
+}
+.inputView{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-left: 20rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  background: var(--fontColorWhite);
+}
+.submit{
+  height: 90rpx;
+  width: 400rpx;
+  margin-top: 100rpx;
+  border-radius: 20rpx;
+  color: var(--fontColorWhite);
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--componnentOrange);
+}

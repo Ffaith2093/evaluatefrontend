@@ -1,0 +1,47 @@
+<!--pages/student/commentMember/commentMember.wxml-->
+<navBar navTitle="评价小助手" style="width:200rpx;" isArrowWhite='true' navTitleColor="#fff"></navBar>
+<view class="topBackground">
+  <image src="{{topImage}}" class="topImg"></image>
+  <view class="middleLine"></view>
+  <view class="rightView">
+    <view class="firstTab">
+      <image class="star" src="{{starImg}}"></image>
+      <text class="starText">当前作业：</text>
+    </view>
+    <view class="classDetail">{{homeworkInfo.homeworkName}}</view>
+    <view class="lastTab">
+      <text class="lastText">班级当前人数 : </text>
+      <text class="orangeText"> {{homeworkInfo.classNumber}}人</text>
+    </view>
+  </view>
+</view>
+<view class="middleContent">
+  <view class="selectContent">
+    <view class="tabItem"  bindtap="needEvaluate">
+      <view class="tabText {{selectItem=='0'?'textactive':''}}">未评价成员</view>
+      <view class="blueCircle" wx:if="{{selectItem=='0'}}"></view>
+    </view>
+    <view class="tabItem" bindtap="haveEvaluate">
+      <view class="tabText {{selectItem=='1'?'textactive':''}}">已评价成员</view>
+      <view class="blueCircle" wx:if="{{selectItem=='1'}}"></view>
+    </view>
+  </view>
+  <view class="middleBackground">
+    <view class="studentItem" wx:if="{{selectItem=='0'}}" wx:for="{{commentInfo.uncommented}}" wx:key="comment_id">
+      <view class="leftPart">
+        <view class="studentName">{{item.comment_name}}</view>
+        <view class="studentID">{{item.comment_id}}</view>
+      </view>
+      <button class="rightButton" bindtap="switchComment" data-index="{{index}}">
+        <image src="{{commentImg}}" class="commentImg"></image>
+        <text>点击评价</text>
+      </button>
+    </view>
+    <view class="studentItem" wx:if="{{selectItem=='1'}}" wx:for="{{commentInfo.commented}}" wx:key="id">
+      <view class="leftPart">
+        <view class="studentName">{{item.name}}</view>
+        <view class="studentID">{{item.id}}</view>
+      </view>
+    </view>
+  </view>
+</view>

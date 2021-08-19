@@ -1,0 +1,70 @@
+.topView{
+  height: 220rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topText{
+  float: left;
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-top: 50rpx;
+  margin-left: 48rpx;
+  margin-right: 100rpx;
+}
+.topImg{
+  width: 260rpx;
+  height: 212rpx;
+  float: right;
+}
+.registerInfo{
+  padding: 60rpx 60rpx 0 60rpx;
+  margin: 20rpx 24rpx 0 24rpx;
+  background: var(--componentBlue);
+  display: flex;
+  flex-direction: column;
+  border-radius: 40rpx;
+  line-height: 40rpx;
+}
+.registerItem{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+.itemImg{
+  height: 70rpx;
+  width: 70rpx;
+  margin-right: 32rpx;
+}
+.inputItem{
+  height: 80rpx;
+  width: 450rpx;
+  padding-left: 15rpx;
+  border-radius: 12rpx;
+  border: 1px solid #BBBBBB;
+  background: #FFFFFF;
+  font-size: 26rpx;
+  font-family: PingFang SC;
+  color: #888888;
+}
+.bottomBtn{
+  background: var(--buttonPurple);
+  width: 70% !important;
+  height: 80rpx;
+  margin-top: 88rpx;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 70rpx;
+}
+button::after{
+  border: none;
+}
+.bottomBtn>text{
+  font-size: 40rpx;
+  color: #FFFFFF;
+  font-weight: 400;
+}

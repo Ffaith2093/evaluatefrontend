@@ -1,0 +1,77 @@
+.all{
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.topText{
+  margin-top: 44rpx;
+  margin-bottom: 44rpx;
+  color: var(--mostDeepBackgroundBlue);
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.commentItem{
+  background: var(--componentLightgrey);
+  padding: 20rpx 60rpx;
+  margin-bottom: 30rpx;
+  border-radius: 40rpx;
+  box-shadow: 2px 4px 6px 0px rgba(0, 0, 0, 0.4);
+}
+.tabText{
+  font-size: 28rpx;
+  color: var(--fontColorBlack);
+  font-weight: bold;
+}
+.line{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.smallCircle{
+  height: 60rpx;
+  width: 60rpx;
+  border: 1px solid rgba(187, 187, 187);
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  color: var(--buttonPurple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smallCircle::after{
+  border: none;
+}
+.hover{
+  background: var(--buttonPurple);
+  color: var(--fontColorBlack);
+}
+.inputItem{
+  margin-top: 20rpx;
+  height: 120rpx;
+  width: 90%;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: 1px solid rgba(187, 187, 187);
+  color: var(--fontColorGrey);
+  padding: 20rpx 30rpx;
+}
+.commitBtn{
+  background: var(--fontColorOrange);
+  width: 80% !important;
+  height: 100rpx;
+  margin-top: 30rpx;
+  margin-bottom: 60rpx;
+  color: var(--fontColorWhite);
+  font-size: 30rpx;
+  border-radius: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.commitBtn::after{
+  border: none;
+}

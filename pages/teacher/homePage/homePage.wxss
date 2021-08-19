@@ -1,0 +1,95 @@
+page {
+  background: var(--shallowYellowBackground);
+  height: 100%;
+}
+.topBtn{
+  margin-top: 20rpx;
+  width: 390rpx;
+  height: 100rpx;
+  border-radius: 60rpx;
+  background: var(--componnentOrange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addImage{
+  height: 50rpx;
+  width: 50rpx;
+  margin-right: 20rpx;
+}
+.addText{
+  font-size: 36rpx;
+  color: var(--fontColorWhite);
+  font-weight: 400;
+}
+.homeworkBack{
+  margin-top: 40rpx;
+}
+.homeworkTitle{
+  margin-left: 50rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: var(--fontColorBlack);
+}
+.homeworkContentBack{
+  margin-top: 70rpx;
+  padding-left: 90rpx;
+  padding-right: 90rpx;
+  display: flex;
+  flex-direction: column;
+}
+.gradeItem{
+  height: 80rpx;
+  background: var(--componentLightgrey);
+  padding-left: 36rpx;
+  margin-bottom: 30rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.gradeItem:hover{
+  background: var(--buttonPurple);
+}
+.gradeTitle{
+  display: flex;
+  flex-direction: row;
+}
+.selectImg{
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 24rpx;
+}
+.gradeName{
+  font-size: 24rpx;
+  color: var(--fontColorBlack);
+  font-weight: normal;
+}
+.sList{
+  margin-top: 16rpx;
+  margin-bottom: 30rpx;
+  padding-top: 28rpx;
+  padding-bottom: 20rpx;
+  background: var(--componentLightgrey);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.homeworkItem{
+  height: 80rpx;
+  margin-bottom: 14rpx;
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+}
+.seeImage{
+  height: 40rpx;
+  width: 40rpx;
+  margin-left: 30rpx;
+  margin-right: 24rpx;
+}
+.homeworkName{
+  color: var(--fontColorBlack);
+  font-size: 24rpx;
+  font-weight: normal;
+}

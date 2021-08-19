@@ -1,0 +1,118 @@
+.topBar{
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+}
+.topImg{
+  height: 440rpx;
+  width: 460rpx;
+  margin-top: 0;
+}
+.centerContent{
+  position: relative;
+  top: -50rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+  padding-top: 30rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  background: var(--fontColorWhite);
+}
+.selectContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.tabItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabText{
+  color: var(--fontColorGrey);
+  font-size: 36rpx;
+  font-weight: normal;
+}
+.textactive{
+  color: var(--fontColorBlack);
+}
+.blueCircle{
+  background: var(--componentBlue);
+  height: 12rpx;
+  width: 12rpx;
+  border-radius: 12rpx;
+  margin-top: 6rpx;
+}
+.mainContent{
+  margin-top: 60rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.title{
+  color: var(--componnentOrange);
+  font-size: 36rpx;
+  font-weight: normal;
+  margin-bottom: 40rpx;
+}
+.homeworkItem{
+  padding: 26rpx 30rpx 26rpx 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #BBBBBB;
+  border-radius: 40rpx;
+  margin-bottom: 20rpx;
+  white-space: nowrap;
+}
+.leftText{
+  display: flex;
+  flex-direction: column;
+}
+.homeworkTitle{
+  color: var(--fontColorBlack);
+  font-size: 28rpx;
+}
+.name{
+  color: var(--deepBackgroundBlue);
+  font-size: 26rpx;
+  font-weight: bold;
+}
+.btnOne{
+  position: absolute;
+  right: 120rpx;
+  width: 170rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  padding-left: 20rpx;
+  padding-right: 10rpx;
+  background: var(--fontColorRed);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnOne::after{
+  border: none;
+}
+.btnOne>text{
+  color: var(--fontColorWhite);
+  font-size: 24rpx;
+  margin-right: 8rpx;
+  font-weight: normal;
+}
+.btnOne>image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.bottomView{
+  height: 140rpx;
+}
+.rightContent{
+  display: flex;
+  flex-direction: column;
+}
+.orange{
+  background: var(--fontColorOrange);
+}
+.green{
+  background :var(--fontColorGreen);
+}

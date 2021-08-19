@@ -1,0 +1,22 @@
+<navBar navTitle="评价小助手" style="width:200rpx;" isArrowWhite='true' navTitleColor="#fff"></navBar>
+<view class="topGrade">
+    <view class="topText">
+      <text class="firstLine">{{studentName}}同学:</text>
+      <text class="secondLine">您的该项作业总分为</text>
+    </view>
+    <view class="gradeImage">
+      <text>{{totalGrade}}分</text>
+    </view>
+</view>
+<view class="all">
+  <view wx:for="{{evaluateInfo.evaluateDetail}}" class="evaluateItem">
+    <view class="topInfo">
+      <view class="studentName">student</view>
+      <image src="{{iconImg}}" class="topImage"></image>
+      <view class="grade">评分： </view>
+      <view class="gradeDetail">{{item.evaluateGrade}}</view>
+    </view>
+    <view class="commentDetail">评语： {{item.comment}}</view>
+  </view>
+  <view class="block"></view>
+</view>

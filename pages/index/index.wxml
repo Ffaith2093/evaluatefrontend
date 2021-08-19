@@ -1,0 +1,23 @@
+<!--pages/identity/identity.wxml-->
+<view class="backColor">
+  <view class="innerContent">
+    <view class="TopWord">
+      <text class="txtFir">欢迎进入『学生评估小助手』！</text>
+      <text class="txtSec">您的身份是：</text>
+    </view>
+    <view class="middleSelect">
+      <button class="buttonIdentity" bindtap="switchTeacher">
+        <image class="buttonImg" src="{{imageTea}}"></image>
+        <text class="buttonTxt">教师</text>
+      </button>
+      <button class="buttonIdentity" bindtap="switchStudent">
+        <image class="buttonImg" src="{{imageStu}}"></image>
+        <text class="buttonTxt">学生</text>
+      </button>
+    </view>
+    <button class="bottomBtn" hover-class="submitPress" bindtap="submit">
+      <image class="getImg" src="{{imageGet}}"></image>
+      <text class="getTxt">确认提交</text>
+    </button>
+  </view>
+</view>

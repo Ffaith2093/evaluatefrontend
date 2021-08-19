@@ -1,0 +1,58 @@
+.all{
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+.titleText{
+  position: relative;
+  top: 34rpx;
+  color: var(--fontColorBlack);
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.inputBack{
+  background: var(--buttonPurple);
+  padding: 20rpx 40rpx;
+  margin-top: 50rpx;
+  border-radius: 30rpx;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.twoLines{
+  display: flex;
+  flex-direction: column;
+}
+.selectText{
+  font-size: 30rpx;
+  color: var(--fontColorBlack);
+  font-weight: normal;
+  white-space: nowrap;
+}
+.inputItem{
+  position: relative;
+  margin-left: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  font-size: 24rpx;
+  display: block;
+  width: 100%;
+  border: 1px solid var(--componentLightgrey);
+  border-radius: 10rpx;
+  color:  var(--fontColorBlack);
+}
+.submitBtn{
+  background: var(--componnentLightOrangeNotouch);
+  border-radius: 30rpx;
+  margin-top: 70rpx;
+  margin-bottom: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 370rpx;
+}
+.buttonText{
+  color: var(--fontColorWhite);
+  font-size: 36rpx;
+  font-weight: lighter;
+}

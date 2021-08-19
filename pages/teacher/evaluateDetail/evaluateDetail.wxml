@@ -1,0 +1,12 @@
+<view class="all">
+  <view wx:for="{{evaluateInfo.evaluateDetail}}" class="evaluateItem">
+    <view class="topInfo">
+      <view class="studentName">{{item.studentName}}</view>
+      <image src="{{iconImg}}" class="topImage"></image>
+      <view class="grade">评分： </view>
+      <view class="gradeDetail">{{item.evaluateGrade}}</view>
+    </view>
+    <view class="commentDetail">评语： {{item.comment}}</view>
+  </view>
+  <view class="block"></view>
+</view>

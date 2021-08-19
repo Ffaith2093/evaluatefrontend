@@ -1,0 +1,64 @@
+/* pages/teacher/classDetail/classDetail.wxss */
+.topBar{
+  height: 140rpx;
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  border-radius: 0 0 40rpx 40rpx;
+  color: var(--fontColorWhite);
+  font-size: 36rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topImage{
+  height: 60rpx;
+  width: 60rpx;
+  margin-left: 60rpx;
+  margin-right: 10rpx;
+}
+.mainContent{
+  padding-left: 42rpx;
+  padding-right: 42rpx;
+  margin-top: 25rpx;
+}
+.hintText{
+  font-size: 28rpx;
+  color: var(--fontColorOrange);
+  margin-bottom: 28rpx;
+}
+.memberTitle{
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: var(--buttonLightPurple);
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+.selectImg{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 24rpx;
+}
+.memberList{
+  margin-top: 50rpx;
+  padding-top: 40rpx;
+  padding-bottom: 45rpx;
+  border-radius: 20rpx;
+  background: var(--shallowYellowBackground);
+}
+.memberItem{
+  margin-bottom: 5rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--componentLightgrey);
+}
+.memberItem:hover{
+  background: var(--shallowYellowBackground);
+}
+.memberDetail{
+  font-size: 32rpx;
+  color: var(--fontColorGrey);
+}

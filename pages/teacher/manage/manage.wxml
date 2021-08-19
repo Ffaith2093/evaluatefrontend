@@ -1,0 +1,27 @@
+<!--pages/teacher/manage/manage.wxml-->
+<navBar navTitle="评价小助手" style="width:200rpx;" noArrow="True" navTitleColor="#fff"></navBar>
+<teacherTab tabs="{{tabs}}" binditemChange="handleItemChange">
+</teacherTab>
+<view class="topBack">
+  <button class="newClassBtn" bindtap="handleCreateClass">
+    <image src="{{addImg}}" class="addImage"></image>
+    <text class="addText">创建班级</text>
+  </button>
+</view>
+<view class="middleContent">
+  <view class="middleTitle">已有班级</view>
+  <view wx:for="{{gradeAllList}}"  wx:key="gradeID" data-index="{{index}}" bindtap="selectToggle">
+    <view class="gradeItem">
+      <image class="selectImg" src="{{selectImage}}" animation="{{tabindex==index?animationData:''}}"></image>
+      <text class="gradeName">{{item.gradeName}}</text>
+    </view>
+          <!--点击显示具体班级列表--> 
+    <view class="sList" wx:if="{{item.selectShow}}" >
+      <view wx:for="{{item.classList}}" wx:key="classID" data-index="{{index}}" class="classItem" bindtap="selectClass">
+        <image src="{{starImage}}" class="starImage"></image>
+        <text class="className">{{item.name}}</text>
+        <text class="classID">ID: {{item.classID}}</text>
+      </view>
+    </view>
+  </view>
+</view>

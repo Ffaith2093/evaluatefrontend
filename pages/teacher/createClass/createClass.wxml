@@ -1,0 +1,19 @@
+<!--pages/teacher/createClass/createClass.wxml-->
+<navBar navTitle="评价小助手" style="width:200rpx;" isArrowWhite='true' navTitleColor="#fff"></navBar>
+<view class="mainContent">
+  <view class="topView">
+    <view class="topTitle">新建班级</view>
+    <image class="topImage" src="{{topImg}}"></image>
+  </view>
+  <view class="inputBack">
+    <view class="inputItem">
+      <view class="inputText">所属年级 ： </view>
+      <input class="inputView" bindinput="listenGrade"></input>
+    </view>
+    <view class="inputItem">
+      <view class="inputText">新建班级名 ：</view>
+      <input class="inputView" bindinput="listenClassName"></input>
+    </view>
+  </view>
+</view>
+<button class="submit" bindtap="handleSubmit">确认新建</button>

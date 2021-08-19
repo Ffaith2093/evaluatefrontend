@@ -1,0 +1,32 @@
+<studentTab tabs="{{tabs}}" binditemChange="handleItemChange"></studentTab>
+<view class="all">
+  <view class="myTopBack">
+    <image class="back1" src="{{backPicture}}"></image>
+    <view class="middleBlock">
+      <image src="{{userProfile}}" class="myProfile"></image>
+      <view class="centerText">
+        <view class="nameText">{{userName}}</view>
+        <view class="identityImg">学生</view>
+      </view>
+      <view class="infoBlock">
+        <view class="detailBlock">
+          <image class="schoolImg" src="{{schoolImg}}"></image>
+          <text class="schoolTitle">学校</text>
+          <text class="schoolName">陕西师范大学</text>
+        </view>
+        <view class="centerLine"></view>
+        <view class="detailBlock">
+          <image class="schoolImg" src="{{classImg}}"></image>
+          <text class="schoolTitle">班级</text>
+          <text class="schoolName">{{class}}</text>
+        </view>
+        <view class="centerLine"></view>
+        <view class="detailBlock">
+          <image class="schoolImg" src="{{numberImg}}"></image>
+          <text class="schoolTitle">学号</text>
+          <text class="schoolName">{{studentID}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

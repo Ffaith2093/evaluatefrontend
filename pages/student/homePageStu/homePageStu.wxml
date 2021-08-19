@@ -1,0 +1,56 @@
+<studentTab tabs="{{tabs}}" binditemChange="handleItemChange"></studentTab>
+<navBar navTitle="评价小助手" style="width:200rpx;" noArrow='true' navTitleColor="#fff"></navBar>
+<view class="topBar">
+  <image src="{{topImage}}" class="topImg"></image>
+</view>
+<view class="centerContent">
+  <view class="selectContent">
+    <view class="tabItem"  bindtap="needEvaluate">
+      <view class="tabText {{selectItem=='0'?'textactive':''}}">待评价</view>
+      <view class="blueCircle" wx:if="{{selectItem=='0'}}"></view>
+    </view>
+    <view class="tabItem" bindtap="needSubmit">
+      <view class="tabText {{selectItem=='1'?'textactive':''}}">待讲课</view>
+      <view class="blueCircle" wx:if="{{selectItem=='1'}}"></view>
+    </view>
+    <view class="tabItem" bindtap="haveDone">
+      <view class="tabText {{selectItem=='2'?'textactive':''}}">已讲课</view>
+      <view class="blueCircle" wx:if="{{selectItem=='2'}}"></view>
+    </view>
+  </view>
+  <view wx:if="{{selectItem=='0'}}" class="mainContent">
+    <view class="title">当前已发布的作业</view>
+    <view wx:for="{{commentHomeworkInfo.list}}" wx:if="{{item.commentStatus=='0'}}" class="homeworkItem">
+      <view class="leftText">
+        <text class="homeworkTitle">{{item.homeworkName}}</text>
+      </view>
+      <button class="btnOne" data-index="{{index}}" bindtap="switchComment">
+        <text>前往评价</text>
+        <image src="{{arrowImg}}"></image>
+      </button>
+    </view>
+  </view>
+  <view wx:if="{{selectItem=='1'}}" class="mainContent">
+    <view class="title">当前待讲课的作业</view>
+    <view wx:for="{{studentInfo.homeworkList}}" wx:if="{{item.status=='1'}}"class="homeworkItem">
+      <text class="homeworkTitle">{{item.name}}</text>
+      <!--
+      <button class="btnOne orange" bindtap="switchSubmit">
+        <text>前往提交</text>
+        <image src="{{arrowImg}}"></image>
+      </button>
+      -->
+    </view>
+  </view>
+  <view wx:if="{{selectItem=='2'}}" class="mainContent">
+    <view class="title">已讲课的作业</view>
+    <view wx:for="{{studentInfo.homeworkList}}" wx:if="{{item.status=='0'}}"class="homeworkItem">
+      <text class="homeworkTitle">{{item.name}}</text>
+      <button class="btnOne green" bindtap="switchDetail">
+        <text>查看详情</text>
+        <image src="{{arrowImg}}"></image>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="bottomView"></view>

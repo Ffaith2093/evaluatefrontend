@@ -1,0 +1,25 @@
+<view class="all">
+<teacherTab tabs="{{tabs}}" binditemChange="handleItemChange"></teacherTab>
+<button class="topBtn" bindtap="signNewHomework">
+  <image src="{{addImg}}" class="addImage"></image>
+  <text class="addText">布置新作业</text>
+</button>
+<view class="homeworkBack">
+  <view class="homeworkTitle">作业历史</view>
+  <view class="homeworkContentBack">
+    <view wx:for="{{gradeAllList}}" wx:key="gradeID" data-index="{{index}}" bindtap="selectToggle">
+      <view class="gradeItem">
+        <image class="selectImg" src="{{selectImage}}" animation="{{tabindex==index?animationData:''}}"></image>
+        <text class="gradeName">{{item.gradeName}}</text>
+      </view>
+          <!--点击显示具体作业列表--> 
+      <view class="sList" wx:if="{{item.selectShow}}" >
+        <view wx:for="{{item.homework}}" wx:key="homeworkID" data-index="{{index}}" class="homeworkItem" bindtap="selectHomework">
+          <image src="{{seeImage}}" class="seeImage"></image>
+          <text class="homeworkName">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 
+</view>

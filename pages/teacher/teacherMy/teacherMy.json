@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "teacherTab":"/components/teacherTab/teacherTab"
+  },
+  "navigationStyle": "custom"
+}

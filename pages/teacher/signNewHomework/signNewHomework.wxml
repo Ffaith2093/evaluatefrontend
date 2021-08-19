@@ -1,0 +1,30 @@
+<view class="all">
+  <view class="titleText">布置作业</view>
+  <view class="inputBack">
+    <text class="selectText">班级：</text>
+    <input class="classInput"></input>
+  </view>
+  <view class="inputBack">
+    <text class="selectText">作业标题：</text>
+    <input class="inputItem" bindinput="lisenerInputTitle"></input>
+  </view>
+  <view class="inputBack">
+    <text class="selectText">作业要求：</text>
+    <input class="inputItem" bindinput="lisenerInputRequest"></input>
+  </view>
+  <view class="inputBack">
+    <view class="twoLines"> 
+      <text class="selectText">作业所占成绩比</text>
+      <text class="selectText">例 : (0.2)</text>
+    </view>
+    <input class="inputItem" bindinput="lisenerInputRatio"></input>
+  </view>
+  <view wx:for="{{homeworkInfo.concernList}}" wx:key="index" class="inputBack">
+    <text class="selectText">{{item.title}}</text>
+    <input class="inputItem" bindinput="lisenerInputStandard"></input>
+  </view>
+  <button class="submitBtn">
+    <text class="buttonText">提交作业任务</text>
+  </button>
+</view>
+
