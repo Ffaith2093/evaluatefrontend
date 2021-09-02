@@ -83,6 +83,48 @@
           "pathName": "pages/student/homePageStu/homePageStu",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/getOpenId/getOpenId",
+          "pathName": "pages/getOpenId/getOpenId",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/commentDetail/commentDetail",
+          "pathName": "pages/student/commentDetail/commentDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/homePageStu/homePageStu",
+          "pathName": "pages/student/homePageStu/homePageStu",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/student/commentMember/commentMember",
+          "pathName": "pages/student/commentMember/commentMember",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/getOpenId/getOpenId",
+          "pathName": "pages/getOpenId/getOpenId",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/shouldSubmit/shouldSubmit",
+          "pathName": "pages/teacher/shouldSubmit/shouldSubmit",
+          "query": "",
+          "scene": null
         }
       ]
     }

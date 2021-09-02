@@ -1,3 +1,37 @@
+.topGrade{
+  background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
+  height: 200rpx;
+  padding: 20rpx 60rpx;
+  border-radius: 0 0 60rpx 60rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.topText{
+  display: flex;
+  flex-direction: column;
+}
+.gradeImage{
+  height: 160rpx;
+  width: 160rpx;
+  border-radius: 160rpx;
+  border: 5px solid var(--componentPink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fontColorWhite);
+  font-size: 40rpx;
+}
+.firstLine{
+  font-size: 32rpx;
+  color: var(--fontColorWhite);
+  margin-bottom: 20rpx;
+}
+.secondLine{
+  color: var(--fontColorWhite);
+  font-size: 36rpx;
+}
 .all{
   display: flex;
   justify-content: center;

@@ -133,12 +133,22 @@
 .middleBtn::after{
   border: none;
 }
+.bottomBtn{
+  margin-top: 10rpx;
+}
 .greenBack{
-    background: radial-gradient( rgba(131, 204, 191, 1), rgba(131, 204, 191, 0.3));
+    background: radial-gradient( rgba(131, 204, 191, 1), rgba(131, 204, 191, 0.7));
     margin-bottom: 10rpx;
 }
-.yellowBack{
-    background: radial-gradient(rgba(255, 119, 81, 1),rgba(255, 119, 81, 0.3));
+.orangeBack{
+    background: radial-gradient(rgba(255, 119, 81, 1),rgba(255, 119, 81, 0.7));
 }
-
+.yellowBack{
+  background: radial-gradient(rgba(251, 217, 134, 1),rgba(251, 217, 134, 0.7));
+}
+.homeworkHint{
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  color: var(--fontColorGrey);
+}
 

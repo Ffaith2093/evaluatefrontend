@@ -21,8 +21,8 @@
         <view class="numberBack pink">{{noSpeech}}人</view>
       </view>
     </view>
-    <button class="didnotSubmitList">
-      <text>查看未提交同学名单</text>
+    <button class="didnotSubmitList" bindtap="listBtn">
+      <text>查看还未讲课同学名单</text>
     </button>
     <view class="detailItem">
       <image src="{{detailImage}}" class="detailImage"></image>

@@ -1,12 +1,21 @@
+<view class="topGrade">
+    <view class="topText">
+      <text class="firstLine">{{studentName}}同学</text>
+      <text class="secondLine">该项作业总分为</text>
+    </view>
+    <view class="gradeImage">
+      <text>{{grade}}分</text>
+    </view>
+</view>
 <view class="all">
-  <view wx:for="{{evaluateInfo.evaluateDetail}}" class="evaluateItem">
+  <view wx:for="{{commandList}}" class="evaluateItem">
     <view class="topInfo">
-      <view class="studentName">{{item.studentName}}</view>
+      <view class="studentName">{{item.comment_name}}</view>
       <image src="{{iconImg}}" class="topImage"></image>
       <view class="grade">评分： </view>
-      <view class="gradeDetail">{{item.evaluateGrade}}</view>
+      <view class="gradeDetail">{{item.comment_grade}}</view>
     </view>
-    <view class="commentDetail">评语： {{item.comment}}</view>
+    <view class="commentDetail">评语： {{item.comment_content}}</view>
   </view>
   <view class="block"></view>
 </view>

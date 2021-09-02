@@ -1,4 +1,9 @@
-// pages/student/studentMy/studentMy.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+let wxrequest = wxRequest.wxRequest
+
 Page({
 
   /**
@@ -19,15 +24,13 @@ Page({
       imgUrlActive:"../../img/studentTab/my-active.png",
       isActive: true
     }],
-    //用户信息（后期需通过后台获取）
-    userName: "王五五五",
-    studentID: "41812021",
-    class: "计算机科学与技术1801班",
+    //用户信息
+    userName: "",
+    studentID: "",
     backPicture: "../../../img/teacher/teacherMy/back2.png",
     userProfile: "../../../img/teacher/teacherMy/myfile.JPG",
     schoolImg: "../../../img/teacher/teacherMy/school.png",
     numberImg: "../../../img/teacher/teacherMy/number.png",
-    classImg: "../../../img/student/studentMy/banjiliebiao.png",
   },
   //自定义事件
   handleItemChange(e){
@@ -55,11 +58,32 @@ Page({
       tabs: tabs
     });
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: url.url.userInfo,     //请求登陆API
+      method: 'GET',
+      data: {
+              sessionID: app.globalData.sessionID,
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (res) {
+          if(res.data.name != '' && res.data.name != '') {
+            this.setData({
+              userName: res.data.name,
+              studentID: res.data.number
+            })
+          }
+          else {
+            hint.returnError('请求服务器失败')
+          }
+        }
+    })
   },
 
   /**

@@ -101,4 +101,7 @@ page {
   color: var(--fontColorOrange);
   font-weight: 500;
 }
+.blank{
+  height: 150rpx;
+}
 

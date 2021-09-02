@@ -1,4 +1,8 @@
-// pages/teacher/homePage/homePage.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+
 Page({
 
   /**
@@ -36,64 +40,13 @@ Page({
     selectImage: "../../../img/teacher/homePage/yousanjiaoxing.png",
     seeImage: "../../../img/teacher/homePage/chakan.png",
     tabindex: '',
-    //测试数据
-    gradeAllList:[{
-      gradeID: "0004",
-      gradeName: "2018级",
-      selectShow: false, 
-      homework: [{
-        homeworkID: "000001",
-        name: "微课设计作业一",
-      },
-      {
-        homeworkID: "000002",
-        name: "微课设计作业二",
-      },
-      {
-        homeworkID: "000003",
-        name: "微课设计作业三",
-    }]
-    },
-    {
-      gradeID: "0003",
-      gradeName: "2017级",
-      selectShow: false, 
-      homework: [{
-        homeworkID: "000004",
-        name: "微课设计作业一",
-      },
-      {
-        homeworkID: "000005",
-        name: "微课设计作业二",
-      },
-      {
-        homeworkID: "000006",
-        name: "微课设计作业三",
-    }]
-    },
-    {
-      gradeID: "0002",
-      gradeName: "2016级",
-      selectShow: false, 
-      homework: [{
-        homeworkID: "000007",
-        name: "微课设计作业一",
-      },
-      {
-        homeworkID: "000008",
-        name: "微课设计作业二",
-      },
-      {
-        homeworkID: "000009",
-        name: "微课设计作业三",
-    }]
-    },
-    ]
+    //接收作业列表参数
+    homeworkList: [],
   },
+  
   //自定义事件
   handleItemChange(e){
     const index= e.detail.index;
-    console.log(index)
     //跳转页面
     switch(index) {
       case 0:
@@ -102,14 +55,17 @@ Page({
         wx.redirectTo({
           url: '../manage/manage',
         })
+        break;
       case 2:
         wx.redirectTo({
           url: '../picAll/picAll',
         })
+        break;
       case 3:
         wx.redirectTo({
           url: '../teacherMy/teacherMy',
         })
+        break;
       default:
         console.log('error');
     }
@@ -130,14 +86,25 @@ Page({
       url: '../signNewHomework/signNewHomework',
     })
   },
-
+  //给每个item的初始状态赋值为false
+  plusShow() {
+    var len = this.data.homeworkList.length;
+    var i = 0;
+    //console.log(len);
+    for(; i < len; i++){
+      var sItem = "homeworkList["+ i + "].selectShow";
+      this.setData({
+        [sItem]: false
+    })
+    }
+    
+  },
   //option的显示与否
   selectToggle(e){
     const itemIndex = e.currentTarget.dataset.index;
-    //console.log(itemIndex);
-    var nowShow = this.data.gradeAllList[itemIndex].selectShow;//获取当前option显示的状态
+    var nowShow = this.data.homeworkList[itemIndex].selectShow;//获取当前option显示的状态
     nowShow = !nowShow;
-    var sItem = "gradeAllList["+ itemIndex + "].selectShow";
+    var sItem = "homeworkList["+ itemIndex + "].selectShow";
     this.setData({
       [sItem]: nowShow,
       tabindex: itemIndex
@@ -158,7 +125,6 @@ Page({
             animationData: animation.export()
         })
     }
-    //console.log(this.data.gradeAllList[itemIndex].selectShow);
   },
 
   //点击作业item跳转到作业具体信息页
@@ -166,7 +132,8 @@ Page({
     var nowIdx = e.currentTarget.dataset.index;//当前点击的索引
     var tabindex = this.data.tabindex;
     //获取当前作业id,并传递给下一个页面
-    var homeworkID = this.data.gradeAllList[tabindex].homework[nowIdx].homeworkID; 
+    var homeworkID = this.data.homeworkList[tabindex].homework[nowIdx].homework_id; 
+    //console.log(homeworkID);
     if (homeworkID != ''){
       wx.navigateTo({
         url: '../homeworkDetail/homeworkDetail?homeworkID=' + homeworkID
@@ -177,7 +144,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //获取当前所有作业列表
+    wx.request({
+      url: url.url.allWork,     //请求登陆API
+      method: 'GET',
+      data: {
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          that.setData({
+            homeworkList: response.data.homework_class
+          })
+          that.plusShow();
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

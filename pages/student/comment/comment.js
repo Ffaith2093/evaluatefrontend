@@ -14,6 +14,11 @@ Page({
     gradeDetail: ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
     //存储评语
     comment: '',
+    homeworkID: '',
+    commentStudentID: '',
+    commentStudentName: '',
+    commentList: '',
+    /*
     //测试数据
     homeworkDetail: {
       commentName: "陈一",
@@ -30,6 +35,7 @@ Page({
         "重点难点解读"
       ]
     }
+    */
   },
   //点击评分按钮事件
   clickBtn(e) {
@@ -79,11 +85,39 @@ Page({
       }
     })
   },
+  _setPara(homeworkID, commentStudentID) {
+    this.setData({
+      homeworkID: homeworkID,
+      commentStudentID: commentStudentID
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    //console.log(options);
+    const { homeworkID, commentStudentID } = options;
+    that._setPara(homeworkID, commentStudentID);
 
+    wx.request({
+      url: url.url.Comment,     //请求登陆API
+      method: 'POST',
+      data: {
+        homework_id: that.data.homeworkID,
+        comment_id: that.data.commentStudentID
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success :function (res) {
+        //console.log(res.data);
+        that.setData({
+          commentStudentName: res.data.comment_name,
+          commentList: res.data.evaluation_criterion
+        })
+        },
+    })
   },
 
   /**

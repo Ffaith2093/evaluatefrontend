@@ -9,19 +9,13 @@
         <view class="identityImg">学生</view>
       </view>
       <view class="infoBlock">
-        <view class="detailBlock">
+        <view class="leftBlock">
           <image class="schoolImg" src="{{schoolImg}}"></image>
           <text class="schoolTitle">学校</text>
           <text class="schoolName">陕西师范大学</text>
         </view>
         <view class="centerLine"></view>
-        <view class="detailBlock">
-          <image class="schoolImg" src="{{classImg}}"></image>
-          <text class="schoolTitle">班级</text>
-          <text class="schoolName">{{class}}</text>
-        </view>
-        <view class="centerLine"></view>
-        <view class="detailBlock">
+        <view class="rightBlock">
           <image class="schoolImg" src="{{numberImg}}"></image>
           <text class="schoolTitle">学号</text>
           <text class="schoolName">{{studentID}}</text>

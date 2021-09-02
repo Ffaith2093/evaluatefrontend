@@ -1,4 +1,7 @@
-// pages/teacher/createClass/createClass.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
@@ -24,8 +27,33 @@ Page({
       newClassName: inputValue
     })
   },
+  _postInfo() {
+    //上传新建班级数据
+    wx.request({
+      url: url.url.addClass,     
+      method: 'POST',
+      data: {
+              grade: this.data.gradeBelong,
+              class_name: this.data.newClassName
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          console.log(response.data)
+          if(response.data.msg == "创建成功") {
+              let classNumber = response.data.class_number;
+              hint.operSuccess('创建班级成功!' + '该班级编号为' + classNumber)
+          }
+      },
+      fail(error) {
+        hint.returnError();
+      }
+    })
+  },
   handleSubmit() {
     if(this.data.gradeBelong != '' && this.data.newClassName != '') {
+      this._postInfo();
       wx.redirectTo({
         url: '../manage/manage',
       })
@@ -42,7 +70,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**

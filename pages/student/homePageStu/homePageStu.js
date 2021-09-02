@@ -1,70 +1,25 @@
-// pages/student/homePageStu/homePageStu.js
-Page({
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+let wxrequest = wxRequest.wxRequest
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     topImage: "../../../img/student/homepageStu/hugeImg.png",
     arrowImg: "../../../img/student/homepageStu/youjiantou.png",
+    
+    //接收对应参数
+    finished: [],
+    waitLecture: [],
+    waitCommented: [],
+
+    //导航栏数据
     //选择框下标，默认为0
     selectItem: '0',
-    needEvaluateList :[],
-    needSubmitList :[],
-    haveDoneList :[],
-    //测试数据，应从后台获取到的作业列表信息
-    studentInfo: {
-      studentName: "陈一一",
-      studentID: "41812021",
-      className: "计算机科学与技术1801班",
-      homeworkList: [{
-        name: "微课作业任务一",
-        //该status有三种状态，0表示已经提交，1表示已讲课但未提交，2表示未讲课
-        status: "1",
-      },
-      {
-        name: "微课作业任务二",
-        //该status有三种状态，0表示已经提交，1表示已讲课但未提交，2表示未讲课
-        status: "0",
-      }]
-    },
-    //测试数据，应从后台获取到的应评价作业
-    commentHomeworkInfo: {
-      studentName: "陈一一",
-      studentID: "41812021",
-      className: "计算机科学与技术1801班",
-      classID: "00001",
-      //注意下标，最好再写一个函数重新筛选出未评价的作业，涉及到index，先看后端数据怎么定义的
-      list: [{
-        studentName: "陈一",
-        commentStudentID: "41712001",
-        homeworkID: "00002",
-        homeworkName: "微课作业任务二",
-        commentStatus: "0"  //0表示未评价该作业，1表示已评价
-      },
-      {
-        studentName: "陈一",
-        commentStudentID: "41712001",
-        homeworkID: "00002",
-        homeworkName: "微课作业任务三",
-        commentStatus: "0" 
-      },
-      {
-        studentName: "陈一",
-        commentStudentID: "41712001",
-        homeworkID: "00002",
-        homeworkName: "微课作业任务二",
-        commentStatus: "0"  
-      },
-      {
-        studentName: "陈一",
-        commentStudentID: "41712001",
-        homeworkID: "00002",
-        homeworkName: "微课作业任务二",
-        commentStatus: "1" 
-      }]
-    },
-    //导航栏数据
     tabs:[{
       id:0,
       name:"作业",
@@ -132,28 +87,53 @@ Page({
     })
     }
   },
-  //跳转到评价页面
+
+  //连接后端homework接口
+  _getHomework() {
+    wx.request({
+      url: url.url.homework,     //请求登陆API
+      method: 'GET',
+      data: {
+              sessionID: app.globalData.sessionID,
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success :function (res) {
+        //console.log(res.data);
+        this.setData({
+          finished: res.data.finished,
+          waitLecture: res.data.waitLecture,
+          waitCommented: res.data.waitCommented
+        })
+        },
+    })
+  },
+
+  //跳转到评价成员页面
   switchComment(e) {
-    var index = e.currentTarget.dataset.index;
-    var homeworkID = this.data.commentHomeworkInfo.list[index].homeworkID;
-    var commentSudentID = this.data.commentHomeworkInfo.list[index].commentSudentID;
-    var studentID = this.data.commentHomeworkInfo.studentID;
+    var index = e.currentTarget.detail.index;
+    var homeworkID = this.data.waitCommented[index].homework_id;
+    var title = this.data.waitCommented[index].homework_tile;
     wx.navigateTo({
-      url: '../commentMember/commentMember?homeworkID=' + homeworkID  + "&studentID=" + studentID
+      url: '../commentMember/commentMember?homeworkID=${homeworkID}&title=${title}'
     })
   },
   //跳转到查看评价详情页面
   //need modify
   switchDetail(e) {
+    var index = e.currentTarget.detail.index;
+    var homeworkID = this.data.waitCommented[index].homework_id;
     wx.navigateTo({
-      url: '../commentDetail/commentDetail?homeworkID='
+      url: '../commentDetail/commentDetail?homeworkID=${homeworkID}'
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this;
+    that._getHomework();
   },
 
   /**

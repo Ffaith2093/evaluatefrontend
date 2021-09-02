@@ -34,23 +34,25 @@ Page({
   //自定义事件
   handleItemChange(e){
     const index= e.detail.index;
-    console.log(index)
     //跳转页面
     switch(index) {
       case 0:
         wx.redirectTo({
           url: '../homePage/homePage',
         })
+        break;
       case 1:
         wx.redirectTo({
           url: '../manage/manage',
         })
+        break;
       case 2:
         break;
       case 3:
         wx.redirectTo({
           url: '../teacherMy/teacherMy',
         })
+        break;
       default:
         console.log('error');
     }

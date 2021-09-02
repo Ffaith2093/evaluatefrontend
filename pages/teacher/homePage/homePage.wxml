@@ -1,3 +1,4 @@
+<navBar navColor='#F7F0E7' navTitle="评价小助手" style="width:200rpx;" noArrow="True" navTitleColor="#000"></navBar>
 <view class="all">
 <teacherTab tabs="{{tabs}}" binditemChange="handleItemChange"></teacherTab>
 <button class="topBtn" bindtap="signNewHomework">
@@ -7,19 +8,20 @@
 <view class="homeworkBack">
   <view class="homeworkTitle">作业历史</view>
   <view class="homeworkContentBack">
-    <view wx:for="{{gradeAllList}}" wx:key="gradeID" data-index="{{index}}" bindtap="selectToggle">
+    <view wx:for="{{homeworkList}}" wx:key="class_id" data-index="{{index}}" bindtap="selectToggle">
       <view class="gradeItem">
         <image class="selectImg" src="{{selectImage}}" animation="{{tabindex==index?animationData:''}}"></image>
-        <text class="gradeName">{{item.gradeName}}</text>
+        <text class="gradeName">{{item.class}}</text>
       </view>
           <!--点击显示具体作业列表--> 
-      <view class="sList" wx:if="{{item.selectShow}}" >
-        <view wx:for="{{item.homework}}" wx:key="homeworkID" data-index="{{index}}" class="homeworkItem" bindtap="selectHomework">
+      <view class="sList" wx:if="{{item.selectShow && item.homework}}" >
+        <view wx:for="{{item.homework}}" wx:key="homework_id" data-index="{{index}}" class="homeworkItem" bindtap="selectHomework">
           <image src="{{seeImage}}" class="seeImage"></image>
-          <text class="homeworkName">{{item.name}}</text>
+          <text class="homeworkName">{{item.homework_title}}</text>
         </view>
       </view>
     </view>
   </view>
 </view> 
+  <view class="blank"></view>
 </view>

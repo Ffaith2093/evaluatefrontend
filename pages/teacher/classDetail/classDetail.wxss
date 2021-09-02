@@ -4,7 +4,7 @@
   background: linear-gradient(var(--deepBackgroundBlue), var(--shallowBackgroundBlue));
   border-radius: 0 0 40rpx 40rpx;
   color: var(--fontColorWhite);
-  font-size: 36rpx;
+  font-size: 28rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,6 +14,23 @@
   width: 60rpx;
   margin-left: 60rpx;
   margin-right: 10rpx;
+}
+.endTerm{
+  height: 70rpx;
+  width: 220rpx !important;
+  border-radius: 40rpx;
+  position: absolute;
+  right: 40rpx;
+  background: var(--componnentOrange);
+  font-size: 22rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--fontColorWhite);
+}
+
+.endTerm::after{
+  border: none;
 }
 .mainContent{
   padding-left: 42rpx;

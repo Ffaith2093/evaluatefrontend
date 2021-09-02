@@ -2,17 +2,18 @@
 <navBar navTitle="评价小助手" style="width:200rpx;" isArrowWhite='true' navTitleColor="#fff"></navBar>
 <view class="topBar">
   <image class="topImage" src="{{topImg}}"></image>
-  <text>{{classInfo.className}}</text>
+  <text>{{className}}</text>
+  <button class="endTerm" wx:if="{{ifTerm === 'true'}}" bindtap="clickEnd">结束该班级学期</button>
 </view>
 <view class="mainContent">
   <view class="hintText">点击查看详情～</view>
   <view class="memberTitle">
     <image src="{{selectImg}}" class="selectImg"></image>
-    <text>成员列表 ({{classInfo.memberNum}})</text>
+    <text>成员列表 ({{number}})</text>
   </view>
   <view class="memberList">
-    <view wx:for="{{classInfo.memberDetail}}" class="memberItem" wx:key="{{studentID}}" data-index="{{index}}" bindtap="handleSelect">
-      <view class="memberDetail">{{item.studentID}}   {{item.studentName}}</view>
+    <view wx:for="{{studentList}}" class="memberItem" wx:key="{{student_id}}" data-index="{{index}}" bindtap="handleSelect">
+      <view class="memberDetail">{{item.student_number}}   {{item.student_name}}</view>
     </view>
   </view>
 </view>

@@ -1,4 +1,7 @@
-// pages/teacher/homeworkDetail/homeworkDetail.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
@@ -6,23 +9,58 @@ Page({
    */
   data: {
     //测试数据，后期作业名字应该从前一个页面传过来的作业id获取
-    homeworkName: "微课作业任务一",
-    shouldSubmit: "37",
-    haveSubmit: "25",
-    noSpeech: "9",
-    homeworkRatio: "0.2",
-    homeworkRequest: "本次作业要求同学们参考教学大纲来进行教学设计。",
-    homeworkStandard: ["课堂表现","课堂表现","课堂表现","课堂表现","课堂表现","重点难点解读","重点难点解读","重点难点解读","重点难点解读","重点难点解读",],
+    homeworkName: "",
+    homeworkID: "",
+    shouldSubmit: "",
+    haveSubmit: "",
+    noSpeech: "",
+    homeworkRatio: "",
+    homeworkRequest: "",
+    homeworkStandard: [],
     //图片路径
     topImage: "../../../img/teacher/homeworkDetail/infoInput.png",
     detailImage: "../../../img/teacher/homeworkDetail/bianji.png"
+  },
+
+  listBtn: function() {
+    let id = this.data.homeworkID;
+    wx.navigateTo({
+      url: '../shouldSubmit/shouldSubmit?homeworkID' + id,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var workId = options.homeworkID;
+    //获取当前所有作业列表
+    wx.request({
+      url: url.url.homeworkDetail,     
+      method: 'POST',
+      data: {
+              homework_id: workId
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          console.log(response.data)
+          that.setData({
+            homeworkID: workId,
+            homeworkName: response.data.homework_title,
+            shouldSubmit: response.data.homework_total,
+            haveSubmit: response.data.homework_finished,
+            noSpeech: response.data.no_speech,
+            homeworkRatio: response.data.rate,
+            homeworkRequest: response.data.homework_content,
+            })
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

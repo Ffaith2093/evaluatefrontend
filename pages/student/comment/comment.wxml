@@ -1,7 +1,7 @@
 <!--pages/student/comment/comment.wxml-->
 <view class="all">
-  <view class="topText">当前您正在评价 {{homeworkDetail.commentName}} 的作业</view>
-  <view class="commentItem" wx:for="{{homeworkDetail.commentList}}" data-index="{{index}}">
+  <view class="topText">当前您正在评价 {{commentStudentName}} 的作业</view>
+  <view class="commentItem" wx:for="{{commentList}}" data-index="{{index}}">
     <view class="tabText">{{index + 1}}.{{item}}</view>
     <view class="line">
       <button bindtap="clickBtn" data-grade='1' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '1'? 'hover':''}}">1</button>

@@ -12,6 +12,9 @@ page {
   justify-content: center;
   align-items: center;
 }
+.topBtn::after{
+  border: none;
+}
 .addImage{
   height: 50rpx;
   width: 50rpx;
@@ -92,4 +95,7 @@ page {
   color: var(--fontColorBlack);
   font-size: 24rpx;
   font-weight: normal;
+}
+.blank{
+  height: 150rpx;
 }

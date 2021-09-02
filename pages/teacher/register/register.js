@@ -1,4 +1,9 @@
-// pages/teacher/register/register.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+let wxrequest = wxRequest.wxRequest
+
 Page({
   /**
    * 页面的初始数据
@@ -44,10 +49,40 @@ Page({
       })   
     }
     else {
-      wx.redirectTo({
-        url: '../homePage/homePage',
-      })
+      this.postUserInfo()
     }
+  },
+  //将教师用户注册信息post到服务器上
+  postUserInfo(){
+    wx.request({
+      url: url.url.bindIdentity,     //请求登陆API
+      method: 'POST',
+      data: {
+              sessionID: app.globalData.sessionID,
+              identity: 'teacher',
+              number: this.data.teacherID,
+              name: this.data.teacherName,
+              validate_code: this.data.teacherNumber
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          console.log(response);
+          if(response.data.msg == '绑定成功') {
+            hint.operSuccess('绑定成功');
+            wx.redirectTo({
+              url: '../homePage/homePage',
+            })
+          }
+          else if(response.data.msg == '校验码错误') {
+            hint.returnError('校验码错误，请联系管理员')
+          }
+          else {
+            hint.returnError('绑定失败')
+          }
+        }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

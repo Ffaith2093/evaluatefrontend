@@ -1,4 +1,9 @@
-// pages/student/commentMember/commentMember.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+let wxrequest = wxRequest.wxRequest
+
 Page({
 
   /**
@@ -9,6 +14,12 @@ Page({
     starImg: "../../../img/student/commentMember/star.png",
     commentImg: "../../../img/student/commentMember/search.png",
     selectItem : '0',
+
+    homeworkID: '0001',
+    title: '',
+    uncommented: [],
+    commented: [],
+    /*
     //测试数据
     homeworkInfo: {
       className: "计算机科学与技术1801班",
@@ -35,6 +46,7 @@ Page({
           id: "41812002"      //已评价人id
           }],         // (commented和uncommented的键如果不存在说明没有）
     }
+    */
   },
   //切换到下标0
   needEvaluate() {
@@ -57,18 +69,46 @@ Page({
   //跳转到评价作业页面
   switchComment(e) {
     var index = e.currentTarget.dataset.index;
-    var homeworkID = this.data.homeworkInfo.homeworkID;
-    var commentStudent = this.data.commentInfo.uncommented[index].comment_name;
-    var commentStudentID = this.data.commentInfo.uncommented[index].comment_id;
+    var homeworkID = this.data.homeworkID;
+    var commentStudentID = this.data.uncommented[index].comment_id;
     wx.navigateTo({
-      url: '../comment/comment?homeworkID=' + homeworkID  + "&comomentStudentID=" + commentStudentID + "&comomentStudent=" + commentStudent
+      url: '../comment/comment?homeworkID=${homeworkID}&commentStudentID=${commentStudentID}'
     })
   },
+
+  _setPara(homeworkID, title) {
+    this.setData({
+      homeworkID: homeworkID,
+      title: title
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    //console.log(options);
+    const { homeworkID, title } = options;
+    that._setPara(homeworkID, title);
 
+    wx.request({
+      url: url.url.commentNumber,     //请求登陆API
+      method: 'POST',
+      data: {
+        homework_id: that.data.homeworkID
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success :function (res) {
+        //console.log(res.data);
+        that.setData({
+          commented: res.data.commented,
+          uncommented: res.data.uncommented
+        })
+        },
+    })
   },
 
   /**

@@ -7,15 +7,15 @@
   <view class="registerInfo">
     <view class="registerItem">
       <image class="itemImg" src="{{studentIDUrl}}"></image>
-      <input class="inputItem" placeholder="请输入学号" name="ID" bindinput="lisenerInputID" value="{{studentID}}"/>
+      <input class="inputItem" placeholder="请输入学号" name="ID" type="number" bindinput="lisenerInputID" value="{{studentID}}"/>
     </view>
     <view class="registerItem">
       <image class="itemImg" src="{{studentNameUrl}}"></image>
-      <input class="inputItem" placeholder="请输入姓名" name="name" bindinput="lisenerInputName" value="{{studentName}}"/>
+      <input class="inputItem" placeholder="请输入姓名" name="name" type="text" bindinput="lisenerInputName" value="{{studentName}}"/>
     </view>
     <view class="registerItem">
       <image class="itemImg" src="{{numberUrl}}"></image>
-      <input class="inputItem" placeholder="请输入班级编号" bname="number" bindinput="lisenerInputNumber" value="{{studentNumber}}"/>
+      <input class="inputItem" placeholder="请输入班级编号" bname="number" type="number" bindinput="lisenerInputNumber" value="{{studentNumber}}"/>
     </view>
   </view>
   <button class="bottomBtn" bindtap="clickRegister">

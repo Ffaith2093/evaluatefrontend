@@ -14,12 +14,13 @@
     "pages/teacher/createClass/createClass",
     "pages/teacher/studentDetail/studentDetail",
     "pages/teacher/evaluateDetail/evaluateDetail",
-    "pages/teacher/videoDetail/videoDetail",
     "pages/student/homePageStu/homePageStu",
     "pages/student/studentMy/studentMy",
     "pages/student/comment/comment",
     "pages/student/commentMember/commentMember",
-    "pages/student/commentDetail/commentDetail"
+    "pages/student/commentDetail/commentDetail",
+    "pages/getOpenId/getOpenId",
+    "pages/teacher/shouldSubmit/shouldSubmit"
   ],
   "window": {
     "backgroundTextStyle": "light",

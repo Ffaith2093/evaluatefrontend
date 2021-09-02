@@ -1,4 +1,8 @@
-// pages/teacher/classDetail/classDetail.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+
 Page({
 
   /**
@@ -7,44 +11,118 @@ Page({
   data: {
     topImg: "../../../img/teacher/classDetail/star.png",
     selectImg: "../../../img/teacher/classDetail/ziliao.png",
-    //测试数据(与后端连接时应当通过输入上一页面传来的班级ID来获取班级信息)
-    classInfo: {
-      classID: "00001",
-      className: "计算机科学与技术1801班",
-      memberNum: "37",
-      memberDetail: [{
-        studentID: "41812001",
-        studentName: "陈一"
-      },
-      {
-        studentID: "41812002",
-        studentName: "陈二"
-      },
-      {
-        studentID: "41812003",
-        studentName: "陈三"
-      },
-      {
-        studentID: "41812004",
-        studentName: "陈四"
-      },
-    ]
-    }
+
+    classID: '',
+    className: '',
+    number: '',
+    ifTerm: '',
+    studentList: [],
+
+    /*
+    list: [{
+      student_name: "陈一",
+      student_number: "41812001",
+      student_id: "00001"
+    },{
+      student_name: "陈一",
+      student_number: "41812001",
+      student_id: "00001"
+    },{
+      student_name: "陈一",
+      student_number: "41812001",
+      student_id: "00001"
+    }],
+    */
     
   },
+
+  //获取班级总人数
+  _getNumber() {
+    let count = 0;
+    if(this.data.studentList){
+      count = this.data.studentList.length;
+    }
+    this.setData({
+      number: count
+    })
+  },
+
+  //结束本班级学期
+  clickEnd() {
+    wx.showModal({
+      title: '是否确认结束该学期',
+      success: function (res) {
+        if (res.confirm) {    //点击确定后
+          wx.request({
+            url: url.url.endTerm,   
+            method: 'GET',
+            data: {
+              class_id: this.data.classID
+                  },
+            header: {
+                    'content-type': 'application/json'  //默认值
+                  },
+            success: function (response) {
+                if(response.data.msg == '操作成功') {
+                  hint.operSuccess()
+                  let pages = getCurrentPages()
+                  pages[pages.length -2 ].onLoad()
+                  setTimeout(function () {
+                    wx.redirectTo({
+                    url: '../manage/manage',
+                    });
+                  }, 3000)
+                }
+              },
+            fail(error) {
+              hint.returnError();
+            }
+          })
+        } else {    //点击取消后
+          return;
+        }
+      }
+    })
+  },
+
   handleSelect(e) {
-    console.log(e);
     var index = e.currentTarget.dataset.index;
-    var studentID = this.data.classInfo.memberDetail[index].studentID;
+    var studentID = this.data.studentList[index].student_id;
     wx.navigateTo({
       url: '../studentDetail/studentDetail?studentID=' + studentID
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    that.setData({
+      classID: options.classID,
+      className: options.className,
+      ifTerm: options.ifTerm
+    }),
+    //获取当前所有成员
+    wx.request({
+      url: url.url.classNumber,   
+      method: 'POST',
+      data: {
+        class_id: that.data.classID
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          that.setData({
+            studentList: response.data.all_student
+          })
+          that._getNumber();
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

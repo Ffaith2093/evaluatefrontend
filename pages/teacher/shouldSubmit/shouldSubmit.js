@@ -8,25 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    iconImg: "../../../img/teacher/evaluateDetail/bianji.png",
-
-    studentName: '',
-    studentID: '',
-    homeworkID: '',
-    grade: '',
-    commmentList: []
-
+    studentList: []
     //测试数据
     /*
-    commmentList: [{
-      comment_name: "陈一",
-      comment_grade: "82",
-      comment_content: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。",
+    studentList: [{
+      student_id: "00012",
+      student_name: "陈一",
+      student_number: "41812021"
     },{
-      comment_name: "陈二",
-      comment_grade: "82",
-      comment_content: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。",
-    }],
+      student_id: "00013",
+      student_name: "陈二",
+      student_number: "41812021"
+    },{
+      student_id: "00014",
+      student_name: "陈三",
+      student_number: "41812021"
+    },]
     */
   },
 
@@ -35,28 +32,20 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      studentID: options.studentID,
-      homeworkID: options.homeworkID,
-      studentName: options.studentName
-    })
-
-    //获取当前学生作业评价信息
+    var homeworkID = options.homeworkID;
+    //获取当前未讲课学生名单
     wx.request({
-      url: url.url.commentDetail,  
+      url: url.url.unSpeechStudent,     
       method: 'POST',
       data: {
-              sessionID: app.globalData.sessionID,
-              homework_id: that.data.homeworkID,
-              student_id: that.data.studentID
+              homework_id: homeworkID
             },
       header: {
               'content-type': 'application/json'  //默认值
             },
       success: function (response) {
           that.setData({
-            commmentList: response.data.all_comment,
-            grade: response.data.grade
+            studentList: response.data.students
           })
         },
       fail(error) {

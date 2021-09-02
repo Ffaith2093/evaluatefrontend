@@ -26,6 +26,15 @@ function inputError(text="请输入完整哦",icon="none",duration=1500) {
   })
 }
 
+function operSuccess(text="操作成功", icon="success") {
+  //操作成功
+  wx.showToast({
+      icon:icon,
+      title:text
+  })
+}
+
 exports.networkError = networkError;
 exports.returnError = returnError;
 exports.inputError = inputError;
+exports.operSuccess = operSuccess;

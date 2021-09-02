@@ -20,9 +20,9 @@
   </view>
   <view wx:if="{{selectItem=='0'}}" class="mainContent">
     <view class="title">当前已发布的作业</view>
-    <view wx:for="{{commentHomeworkInfo.list}}" wx:if="{{item.commentStatus=='0'}}" class="homeworkItem">
+    <view wx:for="{{waitCommented}}" class="homeworkItem">
       <view class="leftText">
-        <text class="homeworkTitle">{{item.homeworkName}}</text>
+        <text class="homeworkTitle">{{item.homework_tile}}</text>
       </view>
       <button class="btnOne" data-index="{{index}}" bindtap="switchComment">
         <text>前往评价</text>
@@ -32,8 +32,8 @@
   </view>
   <view wx:if="{{selectItem=='1'}}" class="mainContent">
     <view class="title">当前待讲课的作业</view>
-    <view wx:for="{{studentInfo.homeworkList}}" wx:if="{{item.status=='1'}}"class="homeworkItem">
-      <text class="homeworkTitle">{{item.name}}</text>
+    <view wx:for="{{waitLecture}}"class="homeworkItem">
+      <text class="homeworkTitle">{{item.homework_tile}}</text>
       <!--
       <button class="btnOne orange" bindtap="switchSubmit">
         <text>前往提交</text>
@@ -44,8 +44,8 @@
   </view>
   <view wx:if="{{selectItem=='2'}}" class="mainContent">
     <view class="title">已讲课的作业</view>
-    <view wx:for="{{studentInfo.homeworkList}}" wx:if="{{item.status=='0'}}"class="homeworkItem">
-      <text class="homeworkTitle">{{item.name}}</text>
+    <view wx:for="{{waitCommented}}" class="homeworkItem">
+      <text class="homeworkTitle">{{item.homework_tile}}</text>
       <button class="btnOne green" bindtap="switchDetail">
         <text>查看详情</text>
         <image src="{{arrowImg}}"></image>

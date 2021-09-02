@@ -13,102 +13,36 @@ Page({
     imageStu: '../../img/identity/chengyuan.png',
     imageTea: '../../img/identity/jiaolian.png',
     imageGet: '../../img/identity/queren.png',
-    //判断是否为教师
-    ifTeacher: '',
-    //判断用户是否已经注册,若成功直接跳转到对应到身份页面
-    ifSignin: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    //用户信息
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    canIUseGetUserProfile: false,
+    canIUseOpenData: false,
+    //wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
-  
-  Register() {
-    let that= this
-    wx.getUserProfile({ //获取用户微信信息
-      desc: '登录授权',
-      success: (res) => {
-        that.myUserInfo = res.userInfo   //用户信息
-        let nickName = that.myUserInfo.nickName
-        let avatarUrl = that.myUserInfo.avatarUrl
-        wx.login({ //获取微信code
-          provider: 'weixin',//微信小程序
-          success: function(loginRes) {
-            that.getToken(loginRes.code, duijianren, nickName, avatarUrl)
-          }
-        });
-      },
-      fail: (res) => {
-        console.log("用户拒绝登录", res)
-      }
-    });
-  },
-  getToken(code, duijianren, nickName, avatarUrl) { //登录获取token
-    var that= this;
-    this.$http.request('测试接口').then(function(res) {
-      if (res.code == 200) {
-        wx.setStorageSync('Token', res.data.data.token);//保存token
-        wx.showToast({
-          title: '登录成功'   //提示登录成功
-        });
-        return
-      }
-      uni.showToast({
-        title: '登录失败',
-        icon: "none"
-      });
-    }).catch(function(err) {
-      console.log(err)
-    })
-  },
-
-  // 请求数据并进行处理
-  getMsg() {
-    let that = this;
-    //用户配置请求
-    this._wxLogin()
-},
-//获取用户配置-内部函数
-  _wxLogin() {
-    wxrequest(
-        url.url.wxLogin,
-        "GET",
-        {sessionID:app.globalData.sessionID}
-    ).then((res)=>{
-      console.log(res);
-        }).catch((err)=>{
-            app.globalData.indexRefresh=false;
-            setTimeout(() => {
-                if(err.data &&err.data.resp_code){
-                    hint.returnError();
-                }else{
-                  hint.networkError();
-                  app.globalData.indexLoading = null;
-                }
-            }, 500)
-        })
-    },
 
   //按钮按下教师
   switchTeacher() {
-    let ifTeacher = "1";
-    this.setData({
-      ifTeacher: ifTeacher
-    })
+    let identity = 'teacher';
+    app.globalData.userIdentity = identity;
   },
   //按钮按下学生
   switchStudent() {
-    let ifTeacher = "0";
-    this.setData({
-      ifTeacher: ifTeacher
-    })
+    let identity = 'student';
+    app.globalData.userIdentity = identity;
   },
-  //跳转到学生注册页
+  //跳转到对应身份注册页
   submit() {
-    if (this.data.ifTeacher == "0"){
-      wx.redirectTo({
-        url: '../student/registerStu/registerStu??source=identity',
+    if (app.globalData.userIdentity == 'student'){
+      wx.navigateTo({
+        url: '../student/registerStu/registerStu',
     })
     }
-    else if (this.data.ifTeacher == "1"){
-      wx.redirectTo({
-        url: '../teacher/register/register?source=identity',
+    else if (app.globalData.userIdentity == 'teacher'){
+      wx.navigateTo({
+        url: '../teacher/register/register',
       })
     }
     //未确认身份时跳出弹窗警告
@@ -124,15 +58,90 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMsg();
-    this.Register();
+    var that = this;
+    //获取用户信息
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+      app.globalData.userInfo = that.data.userInfo
+    }
+    //判断是否直接跳转到首页
+    //若本地有缓存信息则直接跳转
+    //若无缓存信息则可能缓存被清除，此时则向服务器发送请求，若身份不为空则也跳转，若身份为空才进入身份选择页  
+    wx.getStorage({
+      userIdentity: 'userIdentity',
+      success: function (res) {
+        if (userIdentity == 'teacher') {
+          app.globalData.userIdentity = 'teacher';
+          wx.redirectTo({
+            url: '../teacher/homepage/homepage',
+        })
+        }
+        else if(userIdentity == 'student') {
+          app.globalData.userIdentity = 'student';
+          wx.redirectTo({
+            url: '../student/homepageStu/homepageStu',
+        })
+        }
+      },
+      fail(error){
+        that.handleLogin();
+      }
+    })
   },
 
+  async handleLogin() {
+    //从服务器获取用户信息
+    await app.getUser().then(() => {
+      console.log(app.globalData.userIdentity);
+      if (app.globalData.userIdentity == 'teacher') {
+        wx.redirectTo({
+          url: '../teacher/homePage/homePage',
+        })
+      }
+      else if(app.globalData.userIdentity == 'student') {
+        wx.redirectTo({
+          url: '../student/homepageStu/homepageStu',
+        })
+      }
+      else if(app.globalData.userIdentity == undefined) {
+        return;
+    }
+    }).catch((err) => {
+      console.log("错误了")
+      console.log(err)
+      setTimeout(() => {
+          wx.hideLoading();
+          if(err.data &&err.data.resp_code){
+              hint.returnError();
+          }else{
+            hint.networkError();
+          }
+      }, 500)
+  })
+  },
+
+  getUserProfile(e) {
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        app.globalData.userInfo = res.userInfo
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      },
+      fail: () => {
+        console.log('error')
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

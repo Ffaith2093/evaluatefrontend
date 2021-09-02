@@ -1,0 +1,29 @@
+.all{
+    margin-top: 60rpx;
+    margin-bottom: 60rpx;
+    padding-left: 100rpx;
+    padding-right: 100rpx;
+}
+.studentItem{
+    height: 80rpx;
+    border-radius: 15rpx;
+    padding-left: 20rpx;
+    background: var(--shallowYellowBackground);
+    margin-bottom: 10rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.stuID{
+    font-size: 28rpx;
+    color: var(--fontColorBlack);
+    margin-right: 20rpx;
+}
+.stuName{
+    font-size: 30rpx;
+    color: var(--fontColorBlack);
+}
+.hint{
+    font-size: 40rpx;
+    color: var(--componnentOrange);
+}

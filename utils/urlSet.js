@@ -1,11 +1,11 @@
 /*所有需要用到的url均封装在此，每个url后面均有作用注释*/
-const localHostV1 = 'http://114.117.212.135:5000/docs/api';
+const localHostV1 = 'http://114.117.212.135:8000/v1';
 const host = localHostV1;
 var url = new Object({
   bindIdentity: host + '/auth/bindIdentity', //绑定身份（学生端，教师端，通用）
   myHomework: host + '/auth/myHomework',  // 查看自己提交的作业
   userInfo: host + '/auth/userInfo', //获取用户基本信息(学生，教师通用)
-  Homework: host + '/auth/homework',   //获取用户的作业(学生端口的首页)
+  homework: host + '/auth/homework',   //获取用户的作业(学生端口的首页)
   wxLogin: host + '/auth/wxLogin',   // 微信小程序登录
 
 

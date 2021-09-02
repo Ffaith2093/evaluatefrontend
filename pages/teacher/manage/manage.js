@@ -1,4 +1,7 @@
-// pages/teacher/manage/manage.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
@@ -8,6 +11,41 @@ Page({
     addImg: "../../../img/teacher/manage/jiahao.png",
     selectImage: "../../../img/teacher/manage/yousanjiaoxing.png",
     starImage: "../../../img/teacher/manage/star.png",
+
+    titleList: [{
+      title: "本学期班级",
+      selectShow: false, 
+    },{
+      title: "非本学期班级",
+      selectShow: false, 
+    }],
+
+    allClass: [],
+    //测试数据
+    /*
+    allClass: [{
+      class_name: "计算机科学与技术1801班",
+      class_grade: "2018级",
+      is_term: true,
+      class_number: "00001"
+    },{
+      class_name: "计算机科学与技术1802班",
+      class_grade: "2018级",
+      is_term: true,
+      class_number: "00002"
+    },{
+      class_name: "计算机科学与技术1803班",
+      class_grade: "2018级",
+      is_term: false,
+      class_number: "00003"
+    },{
+        class_name: "计算机科学与技术1804班",
+        class_grade: "2018级",
+        is_term: false,
+        class_number: "00004"
+    }],
+    */
+
     tabs:[{
       id:0,
       name:"作业",
@@ -33,63 +71,29 @@ Page({
       imgUrlActive:"../../img/teacherTab/my-active.png",
       isActive:false
     }],
-    //测试数据
-    gradeAllList:[{
-      gradeID: "0004",
-      gradeName: "2018级",
-      selectShow: false, 
-      classList: [{
-        classID: "000001",
-        name: "计算机科学与技术1801班",
-      },
-      {
-        classID: "000002",
-        name: "计算机科学与技术1802班",
-      },
-      {
-        classID: "000003",
-        name: "计算机科学与技术1803班",
-    }]
-    },
-    {
-      gradeID: "0003",
-      gradeName: "2017级",
-      selectShow: false, 
-      classList: [{
-        classID: "000001",
-        name: "计算机科学与技术1701班",
-      },
-      {
-        classID: "000001",
-        name: "计算机科学与技术1702班",
-      },
-      {
-        classID: "000001",
-        name: "计算机科学与技术1703班",
-    }]
-    },
-  ]
   },
   //自定义事件
   handleItemChange(e){
     const index= e.detail.index;
-    console.log(index)
     //跳转页面
     switch(index) {
       case 0:
         wx.redirectTo({
           url: '../homePage/homePage',
         })
+        break;
       case 1:
         break;
       case 2:
         wx.redirectTo({
           url: '../picAll/picAll',
         })
+        break;
       case 3:
         wx.redirectTo({
           url: '../teacherMy/teacherMy',
         })
+        break;
       default:
         console.log('error');
     }
@@ -114,9 +118,9 @@ Page({
   selectToggle(e){
     const itemIndex = e.currentTarget.dataset.index;
     //console.log(itemIndex);
-    var nowShow = this.data.gradeAllList[itemIndex].selectShow;//获取当前option显示的状态
+    var nowShow = this.data.titleList[itemIndex].selectShow;//获取当前option显示的状态
     nowShow = !nowShow;
-    var sItem = "gradeAllList["+ itemIndex + "].selectShow";
+    var sItem = "titleList["+ itemIndex + "].selectShow";
     this.setData({
       [sItem]: nowShow,
       tabindex: itemIndex
@@ -139,23 +143,45 @@ Page({
     }
     //console.log(this.data.gradeAllList[itemIndex].selectShow);
   },
+
   //点击作业item跳转到作业具体信息页
-  selectClass(e){
-    var nowIdx = e.currentTarget.dataset.index;//当前点击的索引
-    var tabindex = this.data.tabindex;
+  selectClass(e) {
+    //console.log(e.currentTarget.dataset.id);
     //获取当前作业id,并传递给下一个页面
-    var classID = this.data.gradeAllList[tabindex].classList[nowIdx].classID; 
+    console.log(e);
+    let classID = e.currentTarget.dataset.id;
+    let className = e.currentTarget.dataset.name;
+    let ifTerm = e.currentTarget.dataset.ifterm;
     if (classID != ''){
       wx.navigateTo({
-        url: '../classDetail/classDetail?classID=' + classID
+        url: '../classDetail/classDetail?classID=' + classID + '&className=' + className + '&ifTerm=' + ifTerm 
       })
     }
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    //获取当前所有作业列表
+    wx.request({
+      url: url.url.myClass,     
+      method: 'GET',
+      data: {
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          that.setData({
+            allClass: response.data.all_class
+          })
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

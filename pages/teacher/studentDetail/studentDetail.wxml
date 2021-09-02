@@ -3,40 +3,43 @@
 <view class="topView">
   <image class="topImage" src="{{topImage}}"></image>
   <view class="rightItem">
-    <view class="nameText">{{studentInfo.studentName}}</view>
+    <view class="nameText">{{student_name}}</view>
     <view class="itemText">
       <image src="{{classImg}}" class="itemImg"></image>
-      <text>{{studentInfo.className}}</text>
+      <text>{{student_class}}</text>
     </view>
     <view class="itemText">
       <image src="{{idImg}}" class="itemImg"></image>
-      <text>{{studentInfo.studentID}}</text>
+      <text>{{student_number}}</text>
     </view>
   </view>
 </view>
 <view class="middleContent">
   <view class="middleText">作业提交记录</view>
-  <view class="homeworkItem" wx:for="{{studentInfo.homeworkList}}" wx:key="studentID" data-index="{{index}}">
-    <view class="upItem">
-      <view class="imgBack">
-        <image src="{{submitImg}}" class="homeworkImg"></image>
-      </view>
-      <view class="rightContent">
-        <text class="contentTitle">{{item.name}}</text>
-        <view class="homeworkStatus">
-          <text class="nowText">该作业目前 :  </text>
-          <text class="statusText green" wx:if="{{item.status=='0'}}">已提交</text>
-          <text class="statusText orange" wx:if="{{item.status=='1'}}">已讲课未提交</text>
-          <text class="statusText yellow" wx:if="{{item.status=='2'}}">未讲课</text>
+    <view class="homeworkItem" wx:for="{{homework_detail}}" wx:key="homework_id" data-index="{{index}}">
+      <view class="upItem">
+        <view class="imgBack">
+          <image src="{{submitImg}}" class="homeworkImg"></image>
         </view>
-      </view>
-      <view class="btnView">
-        <button class="middleBtn greenBack" wx:if="{{item.status=='0'}}" bindtap="swichVideo">查看视频</button>
-        <button class="middleBtn yellowBack" wx:if="{{item.status=='1' || item.status=='0'}}" bindtap="switchEvaluate">查看评价</button>
+        <view class="rightContent">
+          <text class="contentTitle">{{item.homework_name}}</text>
+          <view class="homeworkStatus">
+            <text class="nowText">该作业目前 :  </text>
+            <text class="statusText green" wx:if="{{item.homework_status=='已经提交'}}">已完成评价</text>
+            <text class="statusText orange" wx:if="{{item.homework_status=='未展示'}}">未讲课</text>
+            <text class="statusText yellow" wx:if="{{item.homework_status=='正在评价'}}">正在评价</text>
+          </view>
+        </view>
+        <view class="btnView">
+          <button class="middleBtn greenBack" data-id="{{item.homework_id}}" wx:if="{{item.homework_status=='已经提交'}}" bindtap="swichEvaluate">查看评价</button>
+          <button class="middleBtn orangeBack" data-id="{{item.homework_id}}" wx:if="{{item.homework_status=='未展示'}}" bindtap="openEvaluate">开放评价</button> 
+          <button class="middleBtn yellowBack" data-id="{{item.homework_id}}" wx:if="{{item.homework_status=='正在评价'}}" bindtap="getEvaluate">进入评价</button> 
+          <button class="middleBtn orangeBack bottomBtn" data-id="{{item.homework_id}}" wx:if="{{item.homework_status=='正在评价'}}" bindtap="endEvaluate">结束评价</button> 
       </view>
     </view>
-    <view class="lines" wx:if="{{index < homerorkLength-1}}"></view>
+    <view class="lines" wx:if="{{index < homeworkLength-1}}"></view>
   </view>
+  <view wx:if="{{!homework_detail}}" class="homeworkHint">提示： 您当前还未布置作业</view>
 </view>
 
 

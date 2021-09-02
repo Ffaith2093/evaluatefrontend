@@ -1,0 +1,10 @@
+<!--pages/teacher/shouldSubmit/shouldSubmit.wxml-->
+<view class="all">
+    <view wx:for="{{studentList}}" class="studentItem">
+        <text class="stuID">{{item.student_number}}</text>
+        <text class="stuName">{{item.student_name}}</text>
+    </view>
+    <view wx:if="{{!studentList}}">
+        <text class='hint'>当前无未讲课同学</text>
+    </view>
+</view>

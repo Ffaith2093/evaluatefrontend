@@ -1,0 +1,44 @@
+/* pages/getOpenId/getOpenId.wxss */
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.userinfo-btn{
+    margin-top: 50rpx;
+    background: none !important;
+    color: #fff !important;
+    font-size: 40rpx;
+  }
+.userinfo-nickname {
+    color: #000000;
+  }
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #aaa;
+  }
+  
+.userinfo-avatar {
+    overflow: hidden;
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+  }
+.clickBtn{
+    position: absolute;
+    height: 100rpx;
+    width: 400rpx;
+    border-radius: 30rpx;
+    margin-top: 50%;
+    background: var(--componnentOrange);
+    color: var(--fontColorWhite);
+  }
+.clickBtn::after{
+    border: none;
+}

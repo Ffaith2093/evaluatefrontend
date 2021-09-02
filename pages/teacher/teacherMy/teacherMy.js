@@ -1,4 +1,7 @@
-// pages/teacher/teacherMy/teacherMy.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
@@ -31,18 +34,18 @@ Page({
       imgUrlActive:"../../img/teacherTab/my-active.png",
       isActive: true
     }],
-    //用户信息（后期需通过后台获取）
-    userName: "陈一一",
-    teacherID: "15567889",
+    //用户信息
+    userName: "",
+    teacherID: "",
+    userProfile: "",
+
     backPicture: "../../../img/teacher/teacherMy/back2.png",
-    userProfile: "../../../img/teacher/teacherMy/myfile.JPG",
     schoolImg: "../../../img/teacher/teacherMy/school.png",
     numberImg: "../../../img/teacher/teacherMy/number.png",
   },
   //自定义事件
   handleItemChange(e){
     const index= e.detail.index;
-    console.log(index)
     //跳转页面
     switch(index) {
       case 0:
@@ -77,7 +80,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: url.url.userInfo,     
+      method: 'GET',
+      data: {
+              sessionID: app.globalData.sessionID
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          that.setData({
+            userName: response.data.name,
+            teacherID: response.data.number,
+            userProfile: app.globalData.userInfo.avatarUrl
+          })
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

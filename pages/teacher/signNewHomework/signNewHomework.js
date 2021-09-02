@@ -1,64 +1,40 @@
-// pages/teacher/signNewHomework/signNewHomework.js
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //判断当前评分标准输入index
-    nowIndex: 0,
-    //当前现有班级（测试数据）
-    nowClass: [{
-      classID: "00001",
-      className: "计算机科学与技术1801班"
-    },{
-      classID: "00002",
-      className: "生科1801班"
-    },{
-      classID: "00003",
-      className: "数科1801班"
-    },{
-      classID: "00004",
-      className: "地科1801班"
-    }],
-    //输入的数据保存在该数据结构中
-    homeworkInfo: {
-      classBelong: "",
-      homeworkTitle: "",
-      homeworkRequest: "",
-      gradeRatio: "",
-      concernList: [{
-        "title": "评分标准一 :",
-        "content": ""
-    },{
-        "title": "评分标准二 :",
-        "content": ""
-    },{
-      "title": "评分标准三 :",
-      "content": ""
-    },{
-      "title": "评分标准四 :",
-      "content": ""
-    },{
-      "title": "评分标准五 :",
-      "content": ""
-    },{
-      "title": "评分标准六 :",
-      "content": ""
-    },{
-      "title": "评分标准七 :",
-      "content": ""
-    },{
-      "title": "评分标准八 :",
-      "content": ""
-    },{
-      "title": "评分标准九 :",
-      "content": ""
-    },{
-      "title": "评分标准十:",
-      "content": ""
-    }]
-    }
+    //selectArray（测试数据）
+    /*
+    selectArray: [{
+      "class_id": "1",
+      "class_name": "计算机科学与技术1801班"
+  }, {
+      "class_id": "2",
+      "class_name": "生科1801班"
+  }],*/
+    selectArray: [],
+    //输入的数据保存在以下数据中
+    classID: "",
+    homeworkTitle: "",
+    homeworkRequest: "",
+    gradeRatio: "",
+    concernTitle: [ "评分标准一 :", "评分标准二 :", "评分标准三 :", "评分标准四 :", "评分标准五 :",
+                      "评分标准六 :", "评分标准七 :", "评分标准八 :", "评分标准九 :","评分标准十:"],
+    concernList: new Array(10).fill('')
+  },
+  //传递当前选中班级id
+  getDate:function(e){
+    let index = e.detail.index;
+    let id = this.data.selectArray[index].class_id;
+    this.setData({
+      classID: id
+    })
+    console.log(this.data.classID)
   },
   //监听作业标题
   lisenerInputTitle(e) {
@@ -81,21 +57,91 @@ Page({
       gradeRatio: inputValue
     })
   },
+  //监听作业标准
   lisenerInputStandard(e) {
-    var inputValue = e.detail.value;
-    var index = this.data.nowIndex;
-    var content = "concernList["+ index + "].content";
-    var nextIndex = index + 1;
+    let inputValue = e.detail.value;
+    let index = e.currentTarget.dataset.index;
+    let content = "concernList["+ index + "]";
     this.setData ({
       [content]: inputValue,
-      index: nextIndex
+    })
+  },
+  //获取当前学期班级
+  _getTermClass() {
+    const that = this;
+    wx.request({
+      url: url.url.termClass,     
+      method: 'GET',
+      data: {
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          that.setData({
+            selectArray: response.data.term_class
+          })
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
+  },
+  //点击按钮事件
+  handleSubmit() {
+    if(this.data.classID === '' || this.data.homeworkTitle == '' || 
+        this.data.homeworkRequest == '' || this.data.gradeRatio == '') {
+      hint.inputError('请填写完整哦')
+    }
+    else{
+      let i = 0;
+      let array = this.data.concernList
+      console.log(array)
+      for (; i<10; i++) {
+        if(array[i] == ''){
+          hint.inputError('请填写完整哦')
+          return
+        }
+      }
+      this._uploadDetail();
+      }
+  },
+  //上传作业详情
+  _uploadDetail() {
+    const that = this;
+    wx.request({
+      url: url.url.addHomework,     
+      method: 'POST',
+      data: {
+        sessionID: app.globalData.sessionID,
+        class_id: that.data.classID,
+        title: that.data.homeworkTitle,
+        content: that.data.homeworkRequest,
+        rate: that.data.gradeRatio,
+        evaluation_criterion: that.data.concernList
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          console.log(response)
+          if (response.data.msg == "布置作业成功") {
+            hint.operSuccess('布置作业成功');
+          }
+          else{
+            hint.returnError();
+          }
+        },
+      fail(error) {
+        hint.returnError();
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getTermClass();
   },
 
   /**

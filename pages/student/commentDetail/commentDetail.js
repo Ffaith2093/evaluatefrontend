@@ -6,6 +6,7 @@ Page({
   data: {
     iconImg: "../../../img/teacher/evaluateDetail/bianji.png",
     //测试数据
+    
     studentName: "陈一",
     totalGrade: "85",
     evaluateInfo: {
@@ -18,23 +19,7 @@ Page({
     {
       evaluateGrade: "82",
       comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },
-    {
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },
-    {
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },
-    {
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },
-    {
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },]
+    }]
   }
   },
 

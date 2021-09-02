@@ -7,15 +7,15 @@
   <view class="registerInfo">
     <view class="registerItem">
       <image class="itemImg" src="{{teacherIDUrl}}"></image>
-      <input class="inputItem" placeholder="请输入教师工号" name="ID" bindfocus="focus" bindinput="lisenerInputID" value="{{teacherID}}"/>
+      <input class="inputItem" placeholder="请输入教师工号" type="number" bindfocus="focus" bindinput="lisenerInputID" value="{{teacherID}}"/>
     </view>
     <view class="registerItem">
       <image class="itemImg" src="{{teacherNameUrl}}"></image>
-      <input class="inputItem" placeholder="请输入教师姓名" name="name" bindfocus="focus" bindinput="lisenerInputName" value="{{teacherName}}"/>
+      <input class="inputItem" placeholder="请输入教师姓名" type="text" bindfocus="focus" bindinput="lisenerInputName" value="{{teacherName}}"/>
     </view>
     <view class="registerItem">
       <image class="itemImg" src="{{numberUrl}}"></image>
-      <input class="inputItem" placeholder="请输入关联码" bname="number" indfocus="focus" bindinput="lisenerInputNumber" value="{{teacherNumber}}"/>
+      <input class="inputItem" placeholder="请输入关联码" type="number" indfocus="focus" bindinput="lisenerInputNumber" value="{{teacherNumber}}"/>
     </view>
   </view>
   <button class="bottomBtn" bindtap="clickRegister">

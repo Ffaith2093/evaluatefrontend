@@ -1,3 +1,9 @@
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+import wxRequest from '../../../utils/wxRequest.js'
+let wxrequest = wxRequest.wxRequest
+
 Page({
   /**
    * 页面的初始数据
@@ -43,16 +49,44 @@ Page({
       })   
     }
     else {
-      wx.redirectTo({
-        url: '../homePageStu/homePageStu',
-      })
+      this.postUserInfo()
     }
+  },
+  //将学生用户注册信息post到服务器上
+  postUserInfo(){
+    wx.request({
+      url: url.url.bindIdentity,     //请求登陆API
+      method: 'POST',
+      data: {
+              sessionID: app.globalData.sessionID,
+              identity: 'student',
+              number: this.data.studentID,
+              name: this.data.studentName,
+              my_class: this.data.studentNumber
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          if(response.data.msg == '绑定成功') {
+            hint.operSuccess('绑定成功');
+            wx.redirectTo({
+              url: '../homePageStu/homePageStu',
+            })
+          }
+          else if(response.data.msg == '没有该班级') {
+            hint.returnError('没有该班级，请联系老师')
+          }
+          else {
+            hint.returnError('绑定失败')
+          }
+        }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**

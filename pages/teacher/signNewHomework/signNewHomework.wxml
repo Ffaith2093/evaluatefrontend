@@ -2,7 +2,7 @@
   <view class="titleText">布置作业</view>
   <view class="inputBack">
     <text class="selectText">班级：</text>
-    <input class="classInput"></input>
+    <Select prop-array='{{selectArray}}' bind:myget='getDate'></Select>
   </view>
   <view class="inputBack">
     <text class="selectText">作业标题：</text>
@@ -19,11 +19,11 @@
     </view>
     <input class="inputItem" bindinput="lisenerInputRatio"></input>
   </view>
-  <view wx:for="{{homeworkInfo.concernList}}" wx:key="index" class="inputBack">
-    <text class="selectText">{{item.title}}</text>
-    <input class="inputItem" bindinput="lisenerInputStandard"></input>
+  <view wx:for="{{concernTitle}}" class="inputBack">
+    <text class="selectText">{{item}}</text>
+    <input class="inputItem" bindinput="lisenerInputStandard" data-index="{{index}}"></input>
   </view>
-  <button class="submitBtn">
+  <button class="submitBtn" bindtap="handleSubmit">
     <text class="buttonText">提交作业任务</text>
   </button>
 </view>

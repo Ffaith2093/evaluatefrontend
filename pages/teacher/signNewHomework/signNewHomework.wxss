@@ -41,7 +41,7 @@
   color:  var(--fontColorBlack);
 }
 .submitBtn{
-  background: var(--componnentLightOrangeNotouch);
+  background: var(--componnentOrange);
   border-radius: 30rpx;
   margin-top: 70rpx;
   margin-bottom: 70rpx;
@@ -51,8 +51,11 @@
   height: 100rpx;
   width: 370rpx;
 }
+.submitBtn::after{
+  border: none;
+}
 .buttonText{
   color: var(--fontColorWhite);
   font-size: 36rpx;
-  font-weight: lighter;
+  font-weight: light;
 }

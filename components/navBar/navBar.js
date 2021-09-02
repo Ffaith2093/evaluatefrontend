@@ -37,8 +37,9 @@ Component({
       type: String,
       value: 'false'
     },
-    navColor: { // 导航栏背景色 默认白色
-      type: String
+    navColor: { // 导航栏背景色 默认蓝色渐变
+      type: String,
+      value: 'linear-gradient(var(--mostDeepBackgroundBlue), var(--deepBackgroundBlue))'
     },
     backPath: { // 返回页面路径
       type: String,

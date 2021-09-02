@@ -10,18 +10,26 @@
 </view>
 <view class="middleContent">
   <view class="middleTitle">已有班级</view>
-  <view wx:for="{{gradeAllList}}"  wx:key="gradeID" data-index="{{index}}" bindtap="selectToggle">
+    <view wx:for="{{titleList}}" data-index="{{index}}" bindtap="selectToggle">
     <view class="gradeItem">
       <image class="selectImg" src="{{selectImage}}" animation="{{tabindex==index?animationData:''}}"></image>
-      <text class="gradeName">{{item.gradeName}}</text>
+      <text class="gradeName">{{item.title}}</text>
     </view>
           <!--点击显示具体班级列表--> 
-    <view class="sList" wx:if="{{item.selectShow}}" >
-      <view wx:for="{{item.classList}}" wx:key="classID" data-index="{{index}}" class="classItem" bindtap="selectClass">
+    <view class="sList" wx:if="{{item.selectShow && index == 0 && allClass}}" >
+      <view wx:for="{{allClass}}" wx:if="{{item.is_term}}" wx:key="class_number" data-index="{{index}}" data-id="{{item.class_number}}" data-name="{{item.class_name}}" data-ifterm="true" class="classItem" bindtap="selectClass">
         <image src="{{starImage}}" class="starImage"></image>
-        <text class="className">{{item.name}}</text>
-        <text class="classID">ID: {{item.classID}}</text>
+        <text class="className">{{item.class_name}}</text>
+        <text class="classID">ID: {{item.class_number}}</text>
+      </view>
+    </view>
+    <view class="sList" wx:if="{{item.selectShow && index == 1 && allClass}}" >
+      <view wx:for="{{allClass}}" wx:if="{{!item.is_term}}" wx:key="class_number" data-index="{{index}}" data-id="{{item.class_number}}" data-name="{{item.class_name}}" data-ifterm="false" class="classItem" bindtap="selectClass">
+        <image src="{{starImage}}" class="starImage"></image>
+        <text class="className">{{item.class_name}}</text>
+        <text class="classID">ID: {{item.class_number}}</text>
       </view>
     </view>
   </view>
 </view>
+<view class="blank"></view>
