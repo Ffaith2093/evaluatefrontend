@@ -4,8 +4,6 @@ var userInfo = null;
 
 Page({
   globalData: {
-    appid: 'wxfa9d027af8ca65a8',//appid需自己提供，此处的appid我随机编写
-    secret: '8e384daf7f37f5ba06e76118f24e2a9e',//secret需自己提供，此处的secret我随机编写
   },
   /**
    * 页面的初始数据
