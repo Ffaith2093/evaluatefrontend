@@ -21,14 +21,14 @@ Page({
       imgUrl:"../../img/teacherTab/manage.png",
       imgUrlActive:"../../img/teacherTab/manage-active.png",
       isActive: false
-    },{
+    },/*{
       id:2,
       name:"汇总",
       imgUrl:"../../img/teacherTab/pictureAll.png",
       imgUrlActive:"../../img/teacherTab/pictureAll-active.png",
       isActive: false
-    },{
-      id:3,
+    },*/{
+      id:2,
       name:"我的",
       imgUrl:"../../img/teacherTab/my.png",
       imgUrlActive:"../../img/teacherTab/my-active.png",

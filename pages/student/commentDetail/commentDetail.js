@@ -1,3 +1,7 @@
+let app = getApp();
+import url from '../../../utils/urlSet.js'
+import hint from '../../../utils/hint.js'
+
 Page({
 
   /**
@@ -5,29 +9,45 @@ Page({
    */
   data: {
     iconImg: "../../../img/teacher/evaluateDetail/bianji.png",
-    //测试数据
-    
-    studentName: "陈一",
-    totalGrade: "85",
-    evaluateInfo: {
-      studentID: "41812021",
-      homeworkID: "00002",
-      evaluateDetail:[{
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    },
-    {
-      evaluateGrade: "82",
-      comment: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。"
-    }]
-  }
+
+    studentName: '',
+    homeworkID: '',
+    grade: '',
+    commmentList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    console.log(options);
+    that.setData({
+      homeworkID: options.homeworkID,
+    })
+    //获取当前学生作业评价信息
+    wx.request({
+      url: url.url.commentDetail,  
+      method: 'POST',
+      data: {
+              sessionID: app.globalData.sessionID,
+              homework_id: that.data.homeworkID
+            },
+      header: {
+              'content-type': 'application/json'  //默认值
+            },
+      success: function (response) {
+          var gradePro = response.data.all_grade.toFixed(2);
+          that.setData({
+            commmentList: response.data.all_comment,
+            grade: gradePro
+          })
+          console.log(response.data)
+        },
+      fail(error) {
+        hint.returnError();
+      }
+    })
   },
 
   /**

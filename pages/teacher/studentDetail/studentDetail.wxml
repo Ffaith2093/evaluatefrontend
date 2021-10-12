@@ -39,6 +39,7 @@
     </view>
     <view class="lines" wx:if="{{index < homeworkLength-1}}"></view>
   </view>
+  <view class="block"></view>
   <view wx:if="{{!homework_detail}}" class="homeworkHint">提示： 您当前还未布置作业</view>
 </view>
 

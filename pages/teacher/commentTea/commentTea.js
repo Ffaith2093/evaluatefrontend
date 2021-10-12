@@ -1,7 +1,7 @@
-// pages/student/comment/comment.js
 let app = getApp();
 import hint from '../../../utils/hint.js'
 import url from '../../../utils/urlSet.js'
+
 Page({
 
   /**
@@ -81,7 +81,7 @@ Page({
                 hint.returnError('请勿重复评价');
               }
               wx.redirectTo({
-                url: '../homePageStu/homePageStu'
+                url: '../manage/manage'
               })
             }
           })

@@ -15,38 +15,10 @@ Page({
     commentImg: "../../../img/student/commentMember/search.png",
     selectItem : '0',
 
-    homeworkID: '0001',
+    homeworkID: '',
     title: '',
     uncommented: [],
     commented: [],
-    /*
-    //测试数据
-    homeworkInfo: {
-      className: "计算机科学与技术1801班",
-      classNumber: "37",
-      homeworkID: "00001",
-      homeworkName: "微课作业一",
-      studentID: "41812021",
-    },
-    commentInfo: {
-      uncommented: [{
-            comment_name: "陈一",    //已评价人姓名，
-            comment_id:  "41812001"  //已评价人id
-          },
-          {
-            comment_name: "陈二",    
-            comment_id:  "41812002"  
-            },
-            {
-              comment_name: "陈三",   
-              comment_id:  "41812003"  
-              }],
-      commented: [{
-          name: "陈二",    //未评价人姓名，
-          id: "41812002"      //已评价人id
-          }],         // (commented和uncommented的键如果不存在说明没有）
-    }
-    */
   },
   //切换到下标0
   needEvaluate() {
@@ -72,7 +44,7 @@ Page({
     var homeworkID = this.data.homeworkID;
     var commentStudentID = this.data.uncommented[index].comment_id;
     wx.navigateTo({
-      url: '../comment/comment?homeworkID=${homeworkID}&commentStudentID=${commentStudentID}'
+      url: '../comment/comment?homeworkID=' + homeworkID + '&commentStudentID=' + commentStudentID
     })
   },
 
@@ -102,7 +74,7 @@ Page({
               'content-type': 'application/json'  //默认值
             },
       success :function (res) {
-        //console.log(res.data);
+        console.log(res.data);
         that.setData({
           commented: res.data.commented,
           uncommented: res.data.uncommented

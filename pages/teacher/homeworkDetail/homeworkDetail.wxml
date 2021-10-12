@@ -9,13 +9,15 @@
   <view class="contentBack">
     <view class="numberBar">
       <view class="numberItem">
-        <text class="numberTitle">作业应交</text>
+        <text class="numberTitle">班级人数</text>
         <view class="numberBack purple">{{shouldSubmit}}人</view>
       </view>
+      <!--
       <view class="numberItem">
         <text class="numberTitle">作业已交</text>
         <view class="numberBack orange">{{haveSubmit}}人</view>
       </view>
+      -->
       <view class="numberItem">
         <text class="numberTitle">暂未讲课</text>
         <view class="numberBack pink">{{noSpeech}}人</view>

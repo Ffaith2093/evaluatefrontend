@@ -8,15 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //selectArray（测试数据）
-    /*
-    selectArray: [{
-      "class_id": "1",
-      "class_name": "计算机科学与技术1801班"
-  }, {
-      "class_id": "2",
-      "class_name": "生科1801班"
-  }],*/
     selectArray: [],
     //输入的数据保存在以下数据中
     classID: "",
@@ -127,6 +118,12 @@ Page({
           console.log(response)
           if (response.data.msg == "布置作业成功") {
             hint.operSuccess('布置作业成功');
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 0,
+              })
+            }, 1000)
+            
           }
           else{
             hint.returnError();

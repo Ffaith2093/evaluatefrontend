@@ -151,4 +151,6 @@
   font-size: 36rpx;
   color: var(--fontColorGrey);
 }
-
+.block{
+  height: 50rpx;
+}

@@ -8,7 +8,7 @@
     </view>
 </view>
 <view class="all">
-  <view wx:for="{{commandList}}" class="evaluateItem">
+  <view wx:for="{{commentList}}" class="evaluateItem">
     <view class="topInfo">
       <view class="studentName">{{item.comment_name}}</view>
       <image src="{{iconImg}}" class="topImage"></image>

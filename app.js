@@ -104,6 +104,8 @@ App({
     userIdentity: null,
     //首页加载
     indexLoading: false,
+    //存储异常评价成绩信息
+    error_data: '',
     //屏幕数据
     platform: 'ios',
     pixelRatio: 2,

@@ -21,30 +21,6 @@ Page({
     }],
 
     allClass: [],
-    //测试数据
-    /*
-    allClass: [{
-      class_name: "计算机科学与技术1801班",
-      class_grade: "2018级",
-      is_term: true,
-      class_number: "00001"
-    },{
-      class_name: "计算机科学与技术1802班",
-      class_grade: "2018级",
-      is_term: true,
-      class_number: "00002"
-    },{
-      class_name: "计算机科学与技术1803班",
-      class_grade: "2018级",
-      is_term: false,
-      class_number: "00003"
-    },{
-        class_name: "计算机科学与技术1804班",
-        class_grade: "2018级",
-        is_term: false,
-        class_number: "00004"
-    }],
-    */
 
     tabs:[{
       id:0,
@@ -58,14 +34,14 @@ Page({
       imgUrl:"../../img/teacherTab/manage.png",
       imgUrlActive:"../../img/teacherTab/manage-active.png",
       isActive: true
-    },{
+    },/*{
       id:2,
       name:"汇总",
       imgUrl:"../../img/teacherTab/pictureAll.png",
       imgUrlActive:"../../img/teacherTab/pictureAll-active.png",
       isActive:false
-    },{
-      id:3,
+    },*/{
+      id:2,
       name:"我的",
       imgUrl:"../../img/teacherTab/my.png",
       imgUrlActive:"../../img/teacherTab/my-active.png",
@@ -84,12 +60,14 @@ Page({
         break;
       case 1:
         break;
+        /*
       case 2:
         wx.redirectTo({
           url: '../picAll/picAll',
         })
         break;
-      case 3:
+        */
+      case 2:
         wx.redirectTo({
           url: '../teacherMy/teacherMy',
         })

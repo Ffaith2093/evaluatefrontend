@@ -22,14 +22,14 @@ Page({
       imgUrl:"../../img/teacherTab/manage.png",
       imgUrlActive:"../../img/teacherTab/manage-active.png",
       isActive:false
-    },{
+    },/*{
       id:2,
       name:"汇总",
       imgUrl:"../../img/teacherTab/pictureAll.png",
       imgUrlActive:"../../img/teacherTab/pictureAll-active.png",
       isActive:false
-    },{
-      id:3,
+    },*/{
+      id:2,
       name:"我的",
       imgUrl:"../../img/teacherTab/my.png",
       imgUrlActive:"../../img/teacherTab/my-active.png",
@@ -56,12 +56,14 @@ Page({
           url: '../manage/manage',
         })
         break;
+        /*
       case 2:
         wx.redirectTo({
           url: '../picAll/picAll',
         })
         break;
-      case 3:
+        */
+      case 2:
         wx.redirectTo({
           url: '../teacherMy/teacherMy',
         })

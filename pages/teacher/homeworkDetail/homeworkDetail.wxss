@@ -63,7 +63,7 @@ page {
 }
 .numberBack{
   height: 72rpx;
-  width: 120rpx;
+  width: 150rpx;
   border-radius: 30rpx;
   display: flex;
   justify-content: center;

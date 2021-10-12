@@ -19,25 +19,13 @@ Page({
     student_number: '',
     student_id: '',
     student_class: '',
-    homework_detail: ''
-
-    //测试数据
-    /*
-    student_name: "陈一一",
-    student_number: "41812021",
-    student_id: "000345",
-    student_class: "计算机科学与技术1801班",
-    homework_detail: [{
-      homework_name: "微课作业任务一",
-      homework_status: "已经提交",
-    },{
-      homework_name: "微课作业任务二",
-      homework_status: "未展示",
-    },{
-      homework_name: "微课作业任务三",
-      homework_status: "正在评价",
-    }]
-    */
+    homework_detail: '',
+    //存储异常成绩信息
+    error_data: '',
+    //评价分数中位数
+    std_grade:'',
+    //评价分数平均值
+    avg_grade:''
   },
   
   //判断作业项数
@@ -61,6 +49,8 @@ Page({
   //点击查看评价，进入查看评价页面
   swichEvaluate: function(e) {
     let homeworkId = e.currentTarget.dataset.id;
+    console.log(this.data.error_data)
+    console.log(this.data.std_grade)
     wx.navigateTo({
       url: '../evaluateDetail/evaluateDetail?homeworkID=' + homeworkId + '&studentID=' + this.data.student_id + '&studentName=' + this.data.student_name
     })
@@ -69,14 +59,17 @@ Page({
   //todo 进入评价页面进行评价操作
   getEvaluate: function(e) {
     let homeworkId = e.currentTarget.dataset.id;
+    let commentStudentID = this.data.student_id;
     wx.navigateTo({
-      url: '../../student/comment/comment?homeworkID=' + homeworkId
+      url: '../../teacher/commentTea/commentTea?homeworkID=' + homeworkId + '&commentStudentID=' + commentStudentID
     })
   },
 
   //开放评价
   openEvaluate: function(e) {
-    let homeworkId = e.currentTarget.dataset.id;
+    let homeworkId = e.currentTarget.dataset.id.toString();
+    let number = this.data.student_number;
+    let id = this.data.student_id;
     wx.showModal({
       title: '是否确认开放评价',
       success: function (res) {
@@ -86,7 +79,7 @@ Page({
             method: 'POST',
             data: {
               homework_id: homeworkId,
-              student_number: this.data.student_number
+              student_number: number
                   },
             header: {
                     'content-type': 'application/json'  //默认值
@@ -96,7 +89,7 @@ Page({
                   hint.operSuccess()
                   setTimeout(function () {
                     //刷新本页面
-                    location.reload();
+                    this.onload(id);
                   }, 2000)
                 }
               },
@@ -111,24 +104,43 @@ Page({
     })
   },
 
-  //todo  结束评价
+  //结束评价
   endEvaluate: function(e) {
     let homeworkId = e.currentTarget.dataset.id;
+    let that = this;
     wx.showModal({
       title: '是否确认结束评价',
-      success: function (res) {
+      success:(res) => {
         if (res.confirm) {    //点击确定后
           wx.request({
             url: url.url.endComment,   
             method: 'POST',
             data: {
               homework_id: homeworkId,
-              student_id: this.data.student_id
+              student_id: that.data.student_id
                   },
             header: {
                     'content-type': 'application/json'  //默认值
                   },
             success: function (response) {
+                console.log(response)
+                that.setData({
+                    error_data: response.data.error_data,
+                    std_grade: response.data.std,
+                    avg_grade: response.data.avg
+                })
+                app.globalData.error_data = that.data.error_data
+                hint.operSuccess()
+                  setTimeout(function () {
+                    //刷新本页面
+                    //location.reload();
+                    if(that.data.error_data){
+                      wx.navigateTo({
+                        url: '../errorData/errorData?std_grade=' + that.data.std_grade + '&avg_grade=' + that.data.avg_grade,
+                      })
+                    }
+                  }, 1000)
+                /*
                 if(response.data.msg == 'success') {
                   hint.operSuccess()
                   setTimeout(function () {
@@ -136,9 +148,10 @@ Page({
                     location.reload();
                   }, 2000)
                 }
+                */
               },
             fail(error) {
-              hint.returnError();
+              hint.returnError('该学生没有正在被评价');
             }
           })
         } else {    //点击取消后

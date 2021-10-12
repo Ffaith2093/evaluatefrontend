@@ -15,7 +15,7 @@
     </view>
     <view class="registerItem">
       <image class="itemImg" src="{{numberUrl}}"></image>
-      <input class="inputItem" placeholder="请输入关联码" type="number" indfocus="focus" bindinput="lisenerInputNumber" value="{{teacherNumber}}"/>
+      <input class="inputItem" placeholder="请输入关联码" indfocus="focus" bindinput="lisenerInputNumber" value="{{teacherNumber}}"/>
     </view>
   </view>
   <button class="bottomBtn" bindtap="clickRegister">

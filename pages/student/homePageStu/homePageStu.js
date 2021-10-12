@@ -9,8 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topImage: "../../../img/student/homepageStu/hugeImg.png",
-    arrowImg: "../../../img/student/homepageStu/youjiantou.png",
+    topImage: "../../../img/student/homePageStu/hugeImg.png",
+    arrowImg: "../../../img/student/homePageStu/youjiantou.png",
     
     //接收对应参数
     finished: [],
@@ -99,33 +99,35 @@ Page({
       header: {
               'content-type': 'application/json'  //默认值
             },
-      success :function (res) {
-        //console.log(res.data);
+      success : (res)=> {
         this.setData({
           finished: res.data.finished,
           waitLecture: res.data.waitLecture,
           waitCommented: res.data.waitCommented
         })
+        console.log(this.data.finished);
         },
     })
   },
 
   //跳转到评价成员页面
   switchComment(e) {
-    var index = e.currentTarget.detail.index;
+    //console.log(e);
+    var index = e.currentTarget.dataset.index;
     var homeworkID = this.data.waitCommented[index].homework_id;
-    var title = this.data.waitCommented[index].homework_tile;
+    var title = this.data.waitCommented[index].homework_title;
     wx.navigateTo({
-      url: '../commentMember/commentMember?homeworkID=${homeworkID}&title=${title}'
+      url: '../commentMember/commentMember?homeworkID=' + homeworkID + '&title=' + title
     })
   },
   //跳转到查看评价详情页面
   //need modify
   switchDetail(e) {
-    var index = e.currentTarget.detail.index;
-    var homeworkID = this.data.waitCommented[index].homework_id;
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    var homeworkID = this.data.finished[index].homework_id;
     wx.navigateTo({
-      url: '../commentDetail/commentDetail?homeworkID=${homeworkID}'
+      url: '../commentDetail/commentDetail?homeworkID=' + homeworkID
     })
   },
   /**

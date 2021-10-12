@@ -1,42 +1,30 @@
+// pages/teacher/errorData/errorData.js
 let app = getApp();
-import url from '../../../utils/urlSet.js'
-import hint from '../../../utils/hint.js'
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    studentList: []
+    error_data: '',
+    //评价分数中位数
+    std_grade:'',
+    //评价分数平均值
+    avg_grade:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    var homeworkID = options.homeworkID;
-    console.log(homeworkID)
-    //获取当前未讲课学生名单
-    wx.request({
-      url: url.url.unSpeechStudent,     
-      method: 'POST',
-      data: {
-              homework_id: homeworkID
-            },
-      header: {
-              'content-type': 'application/json'  //默认值
-            },
-      success: function (response) {
-          that.setData({
-            studentList: response.data.students
-          })
-        },
-      fail(error) {
-        hint.returnError();
-      }
+    var std = parseFloat(options.std_grade).toFixed(2)
+    var avg = parseFloat(options.avg_grade).toFixed(2)
+    this.setData({
+      error_data: app.globalData.error_data,
+      std_grade: std,
+      avg_grade: avg
     })
+    console.log(this.data.error_data)
   },
 
   /**

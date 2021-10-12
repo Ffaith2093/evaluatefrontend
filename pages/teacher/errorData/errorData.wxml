@@ -1,0 +1,17 @@
+<view class="all">
+  <view class="topText">
+    <text>标准差为：</text>
+    <text>{{std_grade}}</text>
+  </view>
+  <view class="topText">
+    <text>平均分为：</text>
+    <text>{{avg_grade}}</text>
+  </view>
+  <view class="errorText">以下为异常评价数据</view>
+  <view class="lineBlock"></view>
+  <view wx:for="{{error_data}}" class="studentItem">
+      <text class="stuID">{{item.number}}</text>
+      <text class="stuName">{{item.name}}</text>
+      <text class="stuGrade">{{item.grade}}</text>
+  </view>
+</view>

@@ -19,10 +19,10 @@
     </view>
   </view>
   <view wx:if="{{selectItem=='0'}}" class="mainContent">
-    <view class="title">当前已发布的作业</view>
+    <view class="title">当前待评价的作业</view>
     <view wx:for="{{waitCommented}}" class="homeworkItem">
       <view class="leftText">
-        <text class="homeworkTitle">{{item.homework_tile}}</text>
+        <text class="homeworkTitle">{{item.homework_title}}</text>
       </view>
       <button class="btnOne" data-index="{{index}}" bindtap="switchComment">
         <text>前往评价</text>
@@ -44,9 +44,9 @@
   </view>
   <view wx:if="{{selectItem=='2'}}" class="mainContent">
     <view class="title">已讲课的作业</view>
-    <view wx:for="{{waitCommented}}" class="homeworkItem">
+    <view wx:for="{{finished}}" class="homeworkItem">
       <text class="homeworkTitle">{{item.homework_tile}}</text>
-      <button class="btnOne green" bindtap="switchDetail">
+      <button class="btnOne green" data-index="{{index}}" bindtap="switchDetail">
         <text>查看详情</text>
         <image src="{{arrowImg}}"></image>
       </button>

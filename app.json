@@ -20,7 +20,9 @@
     "pages/student/commentMember/commentMember",
     "pages/student/commentDetail/commentDetail",
     "pages/getOpenId/getOpenId",
-    "pages/teacher/shouldSubmit/shouldSubmit"
+    "pages/teacher/shouldSubmit/shouldSubmit",
+    "pages/teacher/commentTea/commentTea",
+    "pages/teacher/errorData/errorData"
   ],
   "window": {
     "backgroundTextStyle": "light",

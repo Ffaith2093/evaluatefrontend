@@ -14,20 +14,10 @@ Page({
     studentID: '',
     homeworkID: '',
     grade: '',
-    commmentList: []
-
-    //测试数据
-    /*
-    commmentList: [{
-      comment_name: "陈一",
-      comment_grade: "82",
-      comment_content: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。",
-    },{
-      comment_name: "陈二",
-      comment_grade: "82",
-      comment_content: "该同学课堂表现力较强，语言表达准确，不足在于知识点讲得过于繁杂。",
-    }],
-    */
+    commentList: [],
+    error_grade: [],
+    std_grade: '',
+    avg_grade: ''
   },
 
   /**
@@ -38,9 +28,9 @@ Page({
     that.setData({
       studentID: options.studentID,
       homeworkID: options.homeworkID,
-      studentName: options.studentName
+      studentName: options.studentName,
     })
-
+    console.log(options)
     //获取当前学生作业评价信息
     wx.request({
       url: url.url.commentDetail,  
@@ -53,11 +43,13 @@ Page({
       header: {
               'content-type': 'application/json'  //默认值
             },
-      success: function (response) {
+      success: (response) =>{
+          var gradePro = response.data.all_grade.toFixed(2);
           that.setData({
-            commmentList: response.data.all_comment,
-            grade: response.data.grade
+            commentList: response.data.all_comment,
+            grade: gradePro
           })
+          console.log(that.data.commentList)
         },
       fail(error) {
         hint.returnError();

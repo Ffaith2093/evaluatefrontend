@@ -17,22 +17,6 @@ Page({
     number: '',
     ifTerm: '',
     studentList: [],
-
-    /*
-    list: [{
-      student_name: "陈一",
-      student_number: "41812001",
-      student_id: "00001"
-    },{
-      student_name: "陈一",
-      student_number: "41812001",
-      student_id: "00001"
-    },{
-      student_name: "陈一",
-      student_number: "41812001",
-      student_id: "00001"
-    }],
-    */
     
   },
 
@@ -49,6 +33,7 @@ Page({
 
   //结束本班级学期
   clickEnd() {
+    var that = this;
     wx.showModal({
       title: '是否确认结束该学期',
       success: function (res) {
@@ -57,12 +42,12 @@ Page({
             url: url.url.endTerm,   
             method: 'GET',
             data: {
-              class_id: this.data.classID
+              class_id: that.data.classID
                   },
             header: {
                     'content-type': 'application/json'  //默认值
                   },
-            success: function (response) {
+            success: (response) =>{
                 if(response.data.msg == '操作成功') {
                   hint.operSuccess()
                   let pages = getCurrentPages()

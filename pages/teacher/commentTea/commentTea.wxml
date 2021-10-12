@@ -1,0 +1,26 @@
+<!--pages/student/comment/comment.wxml-->
+<view class="all">
+  <view class="topText">当前您正在评价 {{commentStudentName}} 的作业</view>
+  <view class="commentItem" wx:for="{{commentList}}" data-index="{{index}}">
+    <view class="tabText">{{index + 1}}.{{item}}</view>
+    <view class="line">
+      <button bindtap="clickBtn" data-grade='1' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '1'? 'hover':''}}">1</button>
+      <button bindtap="clickBtn" data-grade='2' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '2'? 'hover':''}}">2</button>
+      <button bindtap="clickBtn" data-grade='3' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '3'? 'hover':''}}">3</button>
+      <button bindtap="clickBtn" data-grade='4' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '4'? 'hover':''}}">4</button>
+      <button bindtap="clickBtn" data-grade='5' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '5'? 'hover':''}}">5</button>
+    </view>
+    <view class="line">
+      <button bindtap="clickBtn" data-grade='6' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '6'? 'hover':''}}">6</button>
+      <button bindtap="clickBtn" data-grade='7' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '7'? 'hover':''}}">7</button>
+      <button bindtap="clickBtn" data-grade='8' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '8'? 'hover':''}}">8</button>
+      <button bindtap="clickBtn" data-grade='9' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '9'? 'hover':''}}">9</button>
+      <button bindtap="clickBtn" data-grade='10' data-index="{{index}}" class="smallCircle {{gradeDetail[index] == '10'? 'hover':''}}">10</button>
+    </view>
+  </view>
+  <view class="commentItem">
+    <view class="tabText">11. 我的评语:</view>
+    <textarea id='textarea' cols="2" rows="6" class="inputItem" style="overflow: hidden" bindinput="handleInput"></textarea>
+  </view>
+  <button class="commitBtn" bindtap="handleCommit">确认提交评价</button>
+</view>

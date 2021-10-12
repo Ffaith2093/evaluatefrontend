@@ -81,7 +81,7 @@ Page({
         else if(userIdentity == 'student') {
           app.globalData.userIdentity = 'student';
           wx.redirectTo({
-            url: '../student/homepageStu/homepageStu',
+            url: '../student/homePageStu/homePageStu',
         })
         }
       },
@@ -102,7 +102,7 @@ Page({
       }
       else if(app.globalData.userIdentity == 'student') {
         wx.redirectTo({
-          url: '../student/homepageStu/homepageStu',
+          url: '../student/homePageStu/homePageStu',
         })
       }
       else if(app.globalData.userIdentity == undefined) {

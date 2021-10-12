@@ -32,7 +32,7 @@
     <view class="studentItem" wx:if="{{selectItem=='0'}}" wx:for="{{uncommented}}" wx:key="comment_id">
       <view class="leftPart">
         <view class="studentName">{{item.comment_name}}</view>
-        <view class="studentID">{{item.comment_id}}</view>
+        <!--<view class="studentID">{{item.comment_id}}</view>-->
       </view>
       <button class="rightButton" bindtap="switchComment" data-index="{{index}}">
         <image src="{{commentImg}}" class="commentImg"></image>
@@ -42,7 +42,7 @@
     <view class="studentItem" wx:if="{{selectItem=='1'}}" wx:for="{{commented}}" wx:key="id">
       <view class="leftPart">
         <view class="studentName">{{item.name}}</view>
-        <view class="studentID">{{item.id}}</view>
+        <!--<view class="studentID">{{item.id}}</view>-->
       </view>
     </view>
   </view>

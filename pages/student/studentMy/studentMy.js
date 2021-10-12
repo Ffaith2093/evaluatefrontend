@@ -63,6 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     wx.request({
       url: url.url.userInfo,     //请求登陆API
       method: 'GET',
@@ -74,7 +75,7 @@ Page({
             },
       success: function (res) {
           if(res.data.name != '' && res.data.name != '') {
-            this.setData({
+            that.setData({
               userName: res.data.name,
               studentID: res.data.number
             })

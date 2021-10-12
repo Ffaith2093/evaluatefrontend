@@ -24,8 +24,9 @@ Page({
 
   listBtn: function() {
     let id = this.data.homeworkID;
+    console.log(id);
     wx.navigateTo({
-      url: '../shouldSubmit/shouldSubmit?homeworkID' + id,
+      url: '../shouldSubmit/shouldSubmit?homeworkID=' + id,
     })
   },
 
@@ -55,6 +56,7 @@ Page({
             noSpeech: response.data.no_speech,
             homeworkRatio: response.data.rate,
             homeworkRequest: response.data.homework_content,
+            homeworkStandard: response.data.homework_evaluation_criterion
             })
         },
       fail(error) {
